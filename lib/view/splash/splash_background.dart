@@ -18,13 +18,17 @@ class _SplashBackgroundState extends State<SplashBackground> {
   void initState() {
     super.initState();
     videoController.initialize().then((_) {
-      videoController.play();
+      videoController
+        ..setVolume(0)
+        ..play();
       setState(() {});
     });
 
     videoController.setLooping(true);
 
-    audioController.setReleaseMode(ReleaseMode.loop);
+    audioController
+      ..setVolume(0)
+      ..setReleaseMode(ReleaseMode.loop);
 
     audioController.play(AssetSource(Assets.backgroundMusic));
   }
@@ -47,13 +51,12 @@ class _SplashBackgroundState extends State<SplashBackground> {
         final scale = videoRatio > widgetRatio
             ? videoRatio / widgetRatio
             : widgetRatio / videoRatio;
-
         return Transform.scale(
           scale: scale,
           child: Center(
             child: AspectRatio(
               aspectRatio: videoController.value.aspectRatio,
-              child: videoController.value.isInitialized
+              child: videoController.value.isPlaying
                   ? VideoPlayer(videoController)
                   : Image.asset(Assets.heroPlaceholder, fit: BoxFit.cover),
             ),

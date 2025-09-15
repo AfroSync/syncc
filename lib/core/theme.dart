@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncc/core/color.dart';
 
@@ -9,14 +10,46 @@ class ModernTheme {
       brightness: Brightness.light,
     ),
     scaffoldBackgroundColor: ModernColors.background,
+    appBarTheme: AppBarTheme(
+      backgroundColor: ModernColors.background,
+
+      surfaceTintColor: Colors.transparent,
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         padding: EdgeInsetsGeometry.symmetric(vertical: 20, horizontal: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(8),
         ),
-        backgroundColor: ModernColors.white,
       ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: TextButton.styleFrom(
+        padding: EdgeInsetsGeometry.symmetric(vertical: 20, horizontal: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(8),
+        ),
+      ),
+    ),
+
+    // Alternative approach - more concise and readable
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        // Web override for all platforms
+        if (kIsWeb) ...{
+          for (final platform in TargetPlatform.values)
+            platform: const FadeUpwardsPageTransitionsBuilder(),
+        }
+        // Platform-specific transitions when not on web
+        else ...{
+          TargetPlatform.android: const FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
+          TargetPlatform.macOS: const CupertinoPageTransitionsBuilder(),
+          TargetPlatform.linux: const FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.windows: const FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.fuchsia: const FadeUpwardsPageTransitionsBuilder(),
+        },
+      },
     ),
     textTheme: const TextTheme(
       displayLarge: TextStyle(

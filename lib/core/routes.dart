@@ -1,12 +1,16 @@
 /// Route paths for the Syncc app
 /// Contains all route strings as constants for easy management
-class AppRoutes {
+class ModernRoutes {
   // Private constructor to prevent instantiation
-  AppRoutes._();
+  ModernRoutes._();
 
   // Root routes
   static const String root = '/';
-  static const String splash = '/splash';
 
-  static String userProfilePath(String id) => '/user/$id';
+  static const String authChoice = '/auth-choice';
+  static const String artistSignupScreen = '/signup/artist';
+  static const String producerSignupScreen = '/signup/film-producer';
+
+  static String verificationScreen(String code) =>
+      '/signup/verification/:$code';
 }

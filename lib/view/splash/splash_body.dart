@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:syncc/core/color.dart';
 import 'package:syncc/core/responsive.dart';
+import 'package:syncc/core/routes.dart';
 
 class SplashBody extends StatelessWidget {
   const SplashBody({super.key});
@@ -16,7 +18,7 @@ class SplashBody extends StatelessWidget {
           Row(
             children: [
               Text(
-                "AfroSync",
+                "AfroSync™",
                 style: TextStyle(
                   color: ModernColors.white,
                   fontWeight: FontWeight.w600,
@@ -43,11 +45,12 @@ class SplashBody extends StatelessWidget {
                   style: TextStyle(
                     color: ModernColors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: isMobile ? 52 : 80,
+                    fontSize: isMobile ? 60 : 80,
 
                     height: 1,
                   ),
                 ),
+                Row(),
                 SizedBox(height: 38),
                 if (!isMobile) ...[
                   Text(
@@ -65,7 +68,10 @@ class SplashBody extends StatelessWidget {
                   SizedBox(height: 24),
                 ],
                 TextButton(
-                  onPressed: null,
+                  onPressed: () => context.go(ModernRoutes.authChoice),
+                  style: TextButton.styleFrom(
+                    backgroundColor: ModernColors.white,
+                  ),
                   child: Text(
                     "Browse music",
                     style: TextStyle(
@@ -73,9 +79,6 @@ class SplashBody extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: ModernColors.white,
                   ),
                 ),
               ],

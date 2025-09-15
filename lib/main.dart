@@ -18,7 +18,7 @@ class SynccApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ModernTheme.appTheme,
       themeMode: ThemeMode.system,
-      routerConfig: AppRouter.router,
+      routerConfig: ModernRouter.router,
       // Web-specific scroll behavior
       scrollBehavior: kIsWeb ? WebScrollBehavior() : null,
     );
