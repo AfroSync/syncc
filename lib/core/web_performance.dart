@@ -11,10 +11,10 @@ class WebPerformance {
   static void preloadAssets() {
     if (kIsWeb) {
       // Preload critical fonts
-      _preloadFont('Inter-Regular');
-      _preloadFont('Inter-Medium');
-      _preloadFont('Inter-SemiBold');
-      _preloadFont('Inter-Bold');
+      _preloadFont('FormaDJR-Regular');
+      _preloadFont('FormaDJR-Medium');
+      _preloadFont('FormaDJR-Bold');
+      _preloadFont('FormaDJR-Black');
     }
   }
 
@@ -196,7 +196,7 @@ class _WebOptimizedWidgetState extends State<WebOptimizedWidget> {
   }
 }
 
-/// Web-specific scroll behavior
+/// Web-specific scroll behavior for instant feel
 class WebScrollBehavior extends ScrollBehavior {
   @override
   Widget buildScrollbar(
@@ -213,7 +213,8 @@ class WebScrollBehavior extends ScrollBehavior {
   @override
   ScrollPhysics getScrollPhysics(BuildContext context) {
     if (kIsWeb) {
-      return const BouncingScrollPhysics();
+      // Instant scroll physics for web feel
+      return const ClampingScrollPhysics();
     }
     return super.getScrollPhysics(context);
   }

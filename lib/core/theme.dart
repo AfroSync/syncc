@@ -12,8 +12,10 @@ class ModernTheme {
     scaffoldBackgroundColor: ModernColors.background,
     appBarTheme: AppBarTheme(
       backgroundColor: ModernColors.background,
-
       surfaceTintColor: Colors.transparent,
+      // Instant app bar transitions
+      elevation: 0,
+      scrolledUnderElevation: 0,
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
@@ -38,7 +40,7 @@ class ModernTheme {
         // Web override for all platforms
         if (kIsWeb) ...{
           for (final platform in TargetPlatform.values)
-            platform: const FadeUpwardsPageTransitionsBuilder(),
+            platform: const InstantPageTransitionsBuilder(),
         }
         // Platform-specific transitions when not on web
         else ...{
@@ -133,4 +135,21 @@ class ModernTheme {
       ),
     ),
   );
+}
+
+/// Instant transition builder for web-like feel
+class InstantPageTransitionsBuilder extends PageTransitionsBuilder {
+  const InstantPageTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T extends Object?>(
+    PageRoute<T> route,
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    // Return child immediately for instant transitions
+    return child;
+  }
 }

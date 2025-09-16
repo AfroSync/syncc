@@ -6,7 +6,7 @@ class ModernColors {
 
   static const Color text = Color(0xFF090913);
   static const Color textSecondary = Color(0xFF8A8A8A);
-  static const Color white = Color(0xFFFFFFF1);
+  static const Color white = Color(0xFFFFFFFF);
 
   static const Color buttonColor = Color(0xFF070710);
 }

@@ -45,7 +45,7 @@ class SplashBody extends StatelessWidget {
                   style: TextStyle(
                     color: ModernColors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: isMobile ? 60 : 80,
+                    fontSize: isMobile ? 52 : 80,
 
                     height: 1,
                   ),

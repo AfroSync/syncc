@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:syncc/core/routes.dart';
-import 'package:syncc/model/enums/country.dart';
 import 'package:syncc/view/artist/artist_signup_screen.dart';
 import 'package:syncc/view/auth/auth_choice_screen.dart';
 import 'package:syncc/view/auth/verification_screen.dart';
@@ -19,8 +18,13 @@ class ModernRouter {
   static final GoRouter router = GoRouter(
     initialLocation: ModernRoutes.root,
     debugLogDiagnostics: kDebugMode,
-    // Web-specific configuration
+    // Web-specific configuration for instant navigation
     routerNeglect: kIsWeb,
+    // Instant navigation for web feel
+    redirect: (context, state) {
+      // No redirects for instant navigation
+      return null;
+    },
     routes: [
       GoRoute(
         path: ModernRoutes.root,

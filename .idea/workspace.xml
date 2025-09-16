@@ -4,34 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add landing page">
-      <change afterPath="$PROJECT_DIR$/lib/model/artist/artist_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/enums/country.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/enums/music_genre.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/artist/artist_signup_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/auth/auth_choice_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/error/error_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/modern_genre_picker.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/modern_phone_input_field.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/modern_text_field.dart" afterDir="false" />
+    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add artist sign up page">
+      <change afterPath="$PROJECT_DIR$/lib/view/catalog/dashboard.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WEB_DEVELOPMENT_GUIDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/WEB_DEVELOPMENT_GUIDE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/color.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/web_performance.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/web_performance.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_build_config.md" beforeDir="false" afterPath="$PROJECT_DIR$/web_build_config.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,12 +107,21 @@
       <option name="project" value="LOCAL" />
       <updated>1757880380717</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add artist sign up page">
+      <option name="closed" value="true" />
+      <created>1757926013116</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757926013116</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="add landing page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add landing page" />
+    <MESSAGE value="add artist sign up page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add artist sign up page" />
   </component>
 </project>
