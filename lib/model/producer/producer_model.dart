@@ -1,24 +1,21 @@
 import '../enums/country.dart';
-import '../enums/music_genre.dart';
 
 class ProducerModel {
-  String username;
+  String organization;
   String fullName;
   String profileUrl;
   String password;
   String email;
   Country country;
   String role;
-  List<MusicGenre> genres;
 
   ProducerModel({
     this.role = "filmmaker",
-    this.username = "",
+    this.organization = "",
     this.fullName = "",
     this.profileUrl = "",
     this.password = "",
     this.email = "",
     this.country = Country.nigeria,
-    this.genres = const [],
   });
 }

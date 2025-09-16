@@ -56,13 +56,13 @@ class _ModernCountryPickerState extends State<ModernCountryPicker> {
         Text(
           widget.title,
           style: TextStyle(
-            color: ModernColors.textSecondary,
+            color: ModernColors.text,
             fontSize: 14,
             fontWeight: FontWeight.w500,
             height: 0.5,
           ),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 12),
 
         ValueListenableBuilder<List<Country>>(
           valueListenable: countries,
@@ -97,38 +97,45 @@ class _ModernCountryPickerState extends State<ModernCountryPicker> {
               },
               menuChildren: [
                 // Search field within the menu
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (keyword) => filterList(),
-                    decoration: InputDecoration(
-                      hintText: 'Search countries...',
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: 300, minWidth: 500),
+                  child: ListBody(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextField(
+                          onChanged: (keyword) => filterList(),
+                          decoration: InputDecoration(
+                            hintText: 'Search countries...',
+                            prefixIcon: Icon(Icons.search),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
+                          ),
+                        ),
                       ),
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
-                      ),
-                    ),
+                      // Country list
+                      ...countryList.map((country) {
+                        return MenuItemButton(
+                          onPressed: () => _onCountrySelected(country),
+                          child: Text(
+                            country.name,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: selectedCountry == country
+                                  ? ModernColors.primary
+                                  : ModernColors.text,
+                            ),
+                          ),
+                        );
+                      }),
+                    ],
                   ),
                 ),
-                // Country list
-                ...countryList.map((country) {
-                  return MenuItemButton(
-                    onPressed: () => _onCountrySelected(country),
-                    child: Text(
-                      country.name,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: selectedCountry == country
-                            ? ModernColors.primary
-                            : ModernColors.text,
-                      ),
-                    ),
-                  );
-                }),
               ],
             );
           },

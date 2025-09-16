@@ -5,7 +5,6 @@ import 'package:syncc/model/producer/producer_model.dart';
 import '../../core/color.dart';
 import '../../core/routes.dart';
 import '../widget/modern_country_picker.dart';
-import '../widget/modern_genre_picker.dart';
 import '../widget/modern_profile_picker.dart';
 import '../widget/modern_text_field.dart';
 
@@ -60,12 +59,12 @@ class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
                       children: [
                         ModernProfilePicker(),
                         ModernTextField(
-                          "Artist/Band name",
-                          onChanged: (text) => model.username = text,
-                        ),
-                        ModernTextField(
                           "Full name",
                           onChanged: (text) => model.fullName = text,
+                        ),
+                        ModernTextField(
+                          "Organization Name (optional)",
+                          onChanged: (text) => model.organization = text,
                         ),
                         ModernTextField(
                           "Email",
@@ -79,9 +78,7 @@ class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
                         ModernCountryPicker(
                           onChanged: (country) => model.country = country,
                         ),
-                        ModernGenrePicker(
-                          onChanged: (genres) => model.genres = genres,
-                        ),
+
                         SizedBox(height: 12),
                         SizedBox(
                           width: double.infinity,

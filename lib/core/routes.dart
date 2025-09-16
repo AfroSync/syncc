@@ -13,4 +13,7 @@ class ModernRoutes {
 
   static String verificationScreen(String code) =>
       '/signup/verification/:$code';
+
+  // Main app routes
+  static const String home = '/home';
 }

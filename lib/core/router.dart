@@ -4,6 +4,7 @@ import 'package:syncc/core/routes.dart';
 import 'package:syncc/view/artist/artist_signup_screen.dart';
 import 'package:syncc/view/auth/auth_choice_screen.dart';
 import 'package:syncc/view/auth/verification_screen.dart';
+import 'package:syncc/view/catalog/home_widget.dart';
 import 'package:syncc/view/producer/producer_signup_screen.dart';
 import 'package:syncc/view/splash/splash_screen.dart';
 
@@ -53,6 +54,11 @@ class ModernRouter {
         builder: (context, state) => VerificationScreen(
           countryCode: state.pathParameters["code"] ?? "NG",
         ),
+      ),
+      GoRoute(
+        path: ModernRoutes.home,
+        name: 'home',
+        builder: (context, state) => const HomeWidget(),
       ),
     ],
 

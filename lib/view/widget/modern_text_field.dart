@@ -31,7 +31,7 @@ class ModernTextField extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            color: ModernColors.textSecondary,
+            color: ModernColors.text,
             fontSize: 14,
             fontWeight: FontWeight.w500,
             height: 0.5,

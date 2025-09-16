@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="update artist sign up page">
+    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="fix splash screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/artist/artist_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/artist/artist_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB_DEVELOPMENT_GUIDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/WEB_DEVELOPMENT_GUIDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/catalog/dashboard.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_genre_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_genre_picker.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_text_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_text_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_build_config.md" beforeDir="false" afterPath="$PROJECT_DIR$/web_build_config.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758017314677</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix splash screen">
+      <option name="closed" value="true" />
+      <created>1758024103694</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758024103694</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -126,6 +142,7 @@
     <MESSAGE value="add landing page" />
     <MESSAGE value="add artist sign up page" />
     <MESSAGE value="update artist sign up page" />
-    <option name="LAST_COMMIT_MESSAGE" value="update artist sign up page" />
+    <MESSAGE value="fix splash screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix splash screen" />
   </component>
 </project>

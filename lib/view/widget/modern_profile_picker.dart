@@ -62,7 +62,7 @@ class _ModernProfilePickerState extends State<ModernProfilePicker> {
             "Add photo",
 
             style: TextStyle(
-              color: ModernColors.textSecondary,
+              color: ModernColors.text,
               fontSize: 14,
               fontWeight: FontWeight.w500,
               height: 0.5,

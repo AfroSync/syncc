@@ -69,7 +69,8 @@ class VerificationScreen extends StatelessWidget {
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {
-                      // context.go();
+                      // Navigate to HomeWidget after verification
+                      context.go(ModernRoutes.home);
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: ModernColors.text,
