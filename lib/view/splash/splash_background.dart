@@ -48,11 +48,12 @@ class _SplashBackgroundState extends State<SplashBackground> {
         final widgetRatio = constraints.maxWidth / constraints.maxHeight;
         final videoRatio = videoSize.width / videoSize.height;
 
-        final scale = videoRatio > widgetRatio
+        final double scale = videoRatio > widgetRatio
             ? videoRatio / widgetRatio
             : widgetRatio / videoRatio;
+
         return Transform.scale(
-          scale: scale,
+          scale: double.tryParse(scale.toStringAsPrecision(4)) ?? 1,
           child: Center(
             child: AspectRatio(
               aspectRatio: videoController.value.aspectRatio,

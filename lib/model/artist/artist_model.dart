@@ -13,7 +13,7 @@ class ArtistModel {
   List<MusicGenre> genres;
 
   ArtistModel({
-    this.role = "Artist",
+    this.role = "artist",
     this.username = "",
     this.fullName = "",
     this.profileUrl = "",
