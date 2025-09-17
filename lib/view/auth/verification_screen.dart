@@ -4,6 +4,7 @@ import 'package:syncc/model/enums/country.dart';
 import 'package:syncc/view/widget/modern_text_field.dart';
 
 import '../../core/color.dart';
+import '../../core/responsive.dart';
 import '../../core/routes.dart';
 
 class VerificationScreen extends StatelessWidget {
@@ -14,6 +15,8 @@ class VerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final country = Country.fromShortCode(countryCode) ?? Country.nigeria;
+    final bool isMobile = Responsive.isMobile(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -74,6 +77,12 @@ class VerificationScreen extends StatelessWidget {
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: ModernColors.text,
+                      padding: isMobile
+                          ? EdgeInsetsGeometry.symmetric(
+                              vertical: 12,
+                              horizontal: 16,
+                            )
+                          : null,
                     ),
 
                     child: Text(

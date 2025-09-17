@@ -3,8 +3,19 @@ import 'package:flutter/foundation.dart';
 import 'package:syncc/core/theme.dart';
 import 'package:syncc/core/router.dart';
 import 'package:syncc/core/web_performance.dart';
+import 'package:syncc/controller/audio/audio_service.dart';
 
-void main() {
+import 'api/api_service.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize API service
+  ApiService.instance.initialize();
+
+  // Initialize audio service
+  await AudioService.instance.initialize();
+
   runApp(const SynccApp());
 }
 

@@ -1,14 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:syncc/core/routes.dart';
-import 'package:syncc/view/artist/artist_signup_screen.dart';
+import 'package:syncc/view/auth/artist_signup_screen.dart';
 import 'package:syncc/view/auth/auth_choice_screen.dart';
+import 'package:syncc/view/auth/login_screen.dart';
 import 'package:syncc/view/auth/verification_screen.dart';
-import 'package:syncc/view/catalog/home_widget.dart';
-import 'package:syncc/view/producer/producer_signup_screen.dart';
+import 'package:syncc/view/home_widget.dart';
+import 'package:syncc/view/auth/producer_signup_screen.dart';
 import 'package:syncc/view/splash/splash_screen.dart';
 
-import '../view/error/error_screen.dart';
+import '../view/widget/error_screen.dart';
 
 /// Simple router configuration for the Syncc app
 class ModernRouter {
@@ -39,6 +40,11 @@ class ModernRouter {
         builder: (context, state) => const AuthChoiceScreen(),
       ),
       GoRoute(
+        path: ModernRoutes.login,
+        name: 'login',
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
         path: ModernRoutes.artistSignupScreen,
         name: 'signup-music-artist',
         builder: (context, state) => const ArtistSignupScreen(),
@@ -59,6 +65,26 @@ class ModernRouter {
         path: ModernRoutes.home,
         name: 'home',
         builder: (context, state) => const HomeWidget(),
+        routes: [
+          GoRoute(
+            path: ModernRoutes.profile,
+            name: 'profile',
+            builder: (context, state) =>
+                const HomeWidget(defaultTab: TabView.profile),
+          ),
+          GoRoute(
+            path: ModernRoutes.catalog,
+            name: 'catalog',
+            builder: (context, state) =>
+                const HomeWidget(defaultTab: TabView.catalog),
+          ),
+          GoRoute(
+            path: ModernRoutes.license,
+            name: 'license',
+            builder: (context, state) =>
+                const HomeWidget(defaultTab: TabView.license),
+          ),
+        ],
       ),
     ],
 

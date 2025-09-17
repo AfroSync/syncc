@@ -4,20 +4,41 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="fix splash screen">
+    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add producer sign up flow">
+      <change afterPath="$PROJECT_DIR$/lib/model/license_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/track_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/user/user_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/auth/login_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_track_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/catalog/modern_search_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/catalog/track_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/favourite/favourite_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/license/delete.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/license/license_tile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widget/audio_progress_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widget/music_player_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widget/text_title_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widget/track_cover_image.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widget/track_tile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB_DEVELOPMENT_GUIDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/WEB_DEVELOPMENT_GUIDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/color.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/router.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/artist/artist_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/user/artist_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/user/producer_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/artist/artist_signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/artist_signup_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/auth/auth_choice_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/auth_choice_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/catalog/dashboard.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/profile/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/error/error_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/error_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/producer_signup_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_body.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_genre_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_genre_picker.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_text_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_text_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_build_config.md" beforeDir="false" afterPath="$PROJECT_DIR$/web_build_config.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +92,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
@@ -81,11 +103,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/model/enums" />
-      <recent name="$PROJECT_DIR$/assets/fonts" />
-      <recent name="$PROJECT_DIR$/lib/view/splash" />
-      <recent name="$PROJECT_DIR$/assets/music" />
-      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/lib/model/user" />
+      <recent name="$PROJECT_DIR$/lib/view/profile" />
+      <recent name="$PROJECT_DIR$/lib/view/license" />
+      <recent name="$PROJECT_DIR$/lib/view/favourite" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758024103694</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add producer sign up flow">
+      <option name="closed" value="true" />
+      <created>1758031179702</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758031179702</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -143,6 +173,7 @@
     <MESSAGE value="add artist sign up page" />
     <MESSAGE value="update artist sign up page" />
     <MESSAGE value="fix splash screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix splash screen" />
+    <MESSAGE value="add producer sign up flow" />
+    <option name="LAST_COMMIT_MESSAGE" value="add producer sign up flow" />
   </component>
 </project>

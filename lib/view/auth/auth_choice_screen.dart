@@ -3,11 +3,15 @@ import 'package:go_router/go_router.dart';
 import 'package:syncc/core/color.dart';
 import 'package:syncc/core/routes.dart';
 
+import '../../core/responsive.dart';
+
 class AuthChoiceScreen extends StatelessWidget {
   const AuthChoiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bool isMobile = Responsive.isMobile(context);
+
     return Scaffold(
       body: Center(
         child: ConstrainedBox(
@@ -24,9 +28,8 @@ class AuthChoiceScreen extends StatelessWidget {
                   "AfroSync™",
                   style: TextStyle(
                     color: ModernColors.text,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     fontSize: 60,
-
                     height: 1,
                   ),
                 ),
@@ -39,7 +42,7 @@ class AuthChoiceScreen extends StatelessWidget {
                     color: ModernColors.textSecondary,
 
                     fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     height: 1.25,
                     letterSpacing: 1.4,
                   ),
@@ -53,6 +56,12 @@ class AuthChoiceScreen extends StatelessWidget {
                         context.push(ModernRoutes.producerSignupScreen),
                     style: TextButton.styleFrom(
                       backgroundColor: ModernColors.text,
+                      padding: isMobile
+                          ? EdgeInsetsGeometry.symmetric(
+                              vertical: 12,
+                              horizontal: 16,
+                            )
+                          : null,
                     ),
                     child: Text(
                       "Film Producer",
@@ -76,6 +85,12 @@ class AuthChoiceScreen extends StatelessWidget {
                         context.push(ModernRoutes.artistSignupScreen),
 
                     style: OutlinedButton.styleFrom(
+                      padding: isMobile
+                          ? EdgeInsetsGeometry.symmetric(
+                              vertical: 12,
+                              horizontal: 16,
+                            )
+                          : null,
                       side: BorderSide(
                         color: ModernColors.text,
                         width: 2,
@@ -98,14 +113,19 @@ class AuthChoiceScreen extends StatelessWidget {
                 SizedBox(height: 16),
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
-                  child: Text("log in to an existing account"),
+                  child: GestureDetector(
+                    onTap: () => context.push(ModernRoutes.login),
+                    child: Text("log in to an existing account"),
+                  ),
                 ),
 
                 Spacer(),
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
-
-                  child: Text("browse the music catalog"),
+                  child: GestureDetector(
+                    onTap: () => context.push(ModernRoutes.home),
+                    child: Text("browse the music catalog"),
+                  ),
                 ),
                 SizedBox(height: 36),
               ],

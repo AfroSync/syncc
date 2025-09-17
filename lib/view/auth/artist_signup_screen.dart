@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:syncc/core/color.dart';
 import 'package:syncc/core/routes.dart';
-import 'package:syncc/model/artist/artist_model.dart';
+import 'package:syncc/model/user/artist_model.dart';
 import 'package:syncc/view/widget/modern_country_picker.dart';
 import 'package:syncc/view/widget/modern_genre_picker.dart';
 import 'package:syncc/view/widget/modern_text_field.dart';
 
+import '../../core/responsive.dart';
 import '../widget/modern_profile_picker.dart';
 
 class ArtistSignupScreen extends StatefulWidget {
@@ -27,6 +28,8 @@ class _ArtistSignupScreenState extends State<ArtistSignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isMobile = Responsive.isMobile(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -61,11 +64,16 @@ class _ArtistSignupScreenState extends State<ArtistSignupScreen> {
                         ModernProfilePicker(),
                         ModernTextField(
                           "Artist/Band name",
-                          onChanged: (text) => model.username = text,
+                          onChanged: (text) => model.stageName = text,
                         ),
                         ModernTextField(
                           "Full name",
-                          onChanged: (text) => model.fullName = text,
+                          onChanged: (text) {
+                            model.firstName =
+                                text.split(" ").elementAtOrNull(1) ?? "";
+                            model.lastName =
+                                text.split(" ").elementAtOrNull(1) ?? "";
+                          },
                         ),
                         ModernTextField(
                           "Email",
@@ -77,7 +85,8 @@ class _ArtistSignupScreenState extends State<ArtistSignupScreen> {
                           shouldObscure: true,
                         ),
                         ModernCountryPicker(
-                          onChanged: (country) => model.country = country,
+                          onChanged: (country) =>
+                              model.countryCode = country.shortCode,
                         ),
                         ModernGenrePicker(
                           onChanged: (genres) => model.genres = genres,
@@ -89,12 +98,18 @@ class _ArtistSignupScreenState extends State<ArtistSignupScreen> {
                             onPressed: () {
                               context.go(
                                 ModernRoutes.verificationScreen(
-                                  model.country.shortCode,
+                                  model.countryCode,
                                 ),
                               );
                             },
                             style: TextButton.styleFrom(
                               backgroundColor: ModernColors.text,
+                              padding: isMobile
+                                  ? EdgeInsetsGeometry.symmetric(
+                                      vertical: 12,
+                                      horizontal: 16,
+                                    )
+                                  : null,
                             ),
 
                             child: Text(

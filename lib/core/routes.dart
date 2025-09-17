@@ -8,6 +8,7 @@ class ModernRoutes {
   static const String root = '/';
 
   static const String authChoice = '/auth-choice';
+  static const String login = '/login';
   static const String artistSignupScreen = '/signup/artist';
   static const String producerSignupScreen = '/signup/film-producer';
 
@@ -16,4 +17,9 @@ class ModernRoutes {
 
   // Main app routes
   static const String home = '/home';
+
+  // Nested routes for home tabs
+  static const String profile = '$home/profile';
+  static const String catalog = '$home/catalog';
+  static const String license = '$home/license';
 }

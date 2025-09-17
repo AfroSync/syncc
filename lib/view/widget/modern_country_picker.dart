@@ -20,12 +20,14 @@ class ModernCountryPicker extends StatefulWidget {
 class _ModernCountryPickerState extends State<ModernCountryPicker> {
   late final TextEditingController searchController;
   late ValueNotifier<List<Country>> countries;
+  late final ScrollController _scrollController;
   Country? selectedCountry;
 
   @override
   void initState() {
     searchController = TextEditingController();
     countries = ValueNotifier(Country.values);
+    _scrollController = ScrollController();
     super.initState();
   }
 
@@ -38,6 +40,7 @@ class _ModernCountryPickerState extends State<ModernCountryPicker> {
   void filterList() {
     final query = searchController.value.text;
     countries.value = Country.search(query);
+    setState(() {});
   }
 
   void _onCountrySelected(Country country) {
@@ -50,99 +53,89 @@ class _ModernCountryPickerState extends State<ModernCountryPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.title,
-          style: TextStyle(
-            color: ModernColors.text,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            height: 0.5,
-          ),
-        ),
-        SizedBox(height: 12),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.title,
+              style: TextStyle(
+                color: ModernColors.text,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                height: 0.5,
+              ),
+            ),
+            SizedBox(height: 12),
 
-        ValueListenableBuilder<List<Country>>(
-          valueListenable: countries,
-          builder: (context, countryList, child) {
-            return MenuAnchor(
-              builder: (context, controller, child) {
-                return TextField(
-                  controller: searchController,
-                  onTap: () {
-                    if (controller.isOpen) {
-                      controller.close();
-                    } else {
-                      controller.open();
-                    }
-                  },
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    suffixIcon: Icon(
-                      controller.isOpen
-                          ? Icons.keyboard_arrow_up
-                          : Icons.keyboard_arrow_down,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(color: ModernColors.primary),
-                    ),
-                  ),
-                );
-              },
-              menuChildren: [
-                // Search field within the menu
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 300, minWidth: 500),
-                  child: ListBody(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextField(
-                          onChanged: (keyword) => filterList(),
-                          decoration: InputDecoration(
-                            hintText: 'Search countries...',
-                            prefixIcon: Icon(Icons.search),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 8,
-                            ),
-                          ),
+            ValueListenableBuilder<List<Country>>(
+              valueListenable: countries,
+              builder: (context, countryList, child) {
+                return MenuAnchor(
+                  builder: (context, controller, child) {
+                    return TextField(
+                      controller: searchController,
+                      onChanged: (keyword) => filterList(),
+                      onTap: () {
+                        if (controller.isOpen) {
+                          controller.close();
+                        } else {
+                          controller.open();
+                        }
+                      },
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          controller.isOpen
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
                         ),
                       ),
-                      // Country list
-                      ...countryList.map((country) {
-                        return MenuItemButton(
-                          onPressed: () => _onCountrySelected(country),
-                          child: Text(
-                            country.name,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: selectedCountry == country
-                                  ? ModernColors.primary
-                                  : ModernColors.text,
-                            ),
-                          ),
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
+                    );
+                  },
+                  alignmentOffset: Offset(0, 12),
+                  menuChildren: [
+                    SizedBox(
+                      height: 200,
+                      width: constraints.maxWidth,
+                      child: Scrollbar(
+                        controller: _scrollController,
 
-        SizedBox(height: 24),
-      ],
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          controller: _scrollController,
+                          itemCount: countryList.length,
+                          separatorBuilder: (context, index) => Divider(
+                            height: 1,
+                            thickness: 0.5,
+                            color: Colors.grey[300],
+                          ),
+                          itemBuilder: (context, index) {
+                            final country = countryList[index];
+                            return MenuItemButton(
+                              onPressed: () => _onCountrySelected(country),
+                              child: Text(
+                                country.name,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: ModernColors.text,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+
+            SizedBox(height: 24),
+          ],
+        );
+      },
     );
   }
 }

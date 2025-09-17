@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class ModernColors {
-  static const Color primary = Color(0xFF123322);
+  static const Color primary = Color(0xFF020209);
   static const Color background = Color(0xFFF5F5F5);
 
   static const Color text = Color(0xFF090913);
@@ -9,4 +9,6 @@ class ModernColors {
   static const Color white = Color(0xFFFFFFFF);
 
   static const Color buttonColor = Color(0xFF070710);
+  static const Color active = Color(0xFF02C32D);
+  static const Color error = Color(0xFFB10606);
 }

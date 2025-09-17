@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/model/producer/producer_model.dart';
 
 import '../../core/color.dart';
+import '../../core/responsive.dart';
 import '../../core/routes.dart';
-import '../widget/modern_country_picker.dart';
-import '../widget/modern_profile_picker.dart';
 import '../widget/modern_text_field.dart';
 
-class ProducerSignupScreen extends StatefulWidget {
-  const ProducerSignupScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<ProducerSignupScreen> createState() => _ProducerSignupScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
-  late final ProducerModel model;
-
-  @override
-  void initState() {
-    model = ProducerModel();
-    super.initState();
-  }
+class _LoginScreenState extends State<LoginScreen> {
+  String email = "";
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
+    final bool isMobile = Responsive.isMobile(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -38,7 +33,7 @@ class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Browse through endless content",
+                    "Welcome back",
                     style: TextStyle(
                       color: ModernColors.text,
                       fontSize: 24,
@@ -46,7 +41,7 @@ class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
                     ),
                   ),
                   Text(
-                    "There's some information we need to get you started, please fill the details below.",
+                    "Fill in the information below",
                     style: TextStyle(
                       color: ModernColors.textSecondary,
                       fontSize: 16,
@@ -57,26 +52,10 @@ class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
                   Form(
                     child: Column(
                       children: [
-                        ModernProfilePicker(),
-                        ModernTextField(
-                          "Full name",
-                          onChanged: (text) => model.fullName = text,
-                        ),
-                        ModernTextField(
-                          "Organization Name (optional)",
-                          onChanged: (text) => model.organization = text,
-                        ),
-                        ModernTextField(
-                          "Email",
-                          onChanged: (text) => model.email = text,
-                        ),
+                        ModernTextField("Email", onChanged: (text) => email),
                         ModernTextField(
                           "Password",
-                          onChanged: (text) => model.password = text,
-                          shouldObscure: true,
-                        ),
-                        ModernCountryPicker(
-                          onChanged: (country) => model.country = country,
+                          onChanged: (text) => password,
                         ),
 
                         SizedBox(height: 12),
@@ -84,18 +63,21 @@ class _ProducerSignupScreenState extends State<ProducerSignupScreen> {
                           width: double.infinity,
                           child: TextButton(
                             onPressed: () {
-                              context.go(
-                                ModernRoutes.verificationScreen(
-                                  model.country.shortCode,
-                                ),
-                              );
+                              context.go(ModernRoutes.home);
                             },
                             style: TextButton.styleFrom(
                               backgroundColor: ModernColors.text,
+
+                              padding: isMobile
+                                  ? EdgeInsetsGeometry.symmetric(
+                                      vertical: 12,
+                                      horizontal: 16,
+                                    )
+                                  : null,
                             ),
 
                             child: Text(
-                              "Submit",
+                              "Log In",
 
                               style: TextStyle(
                                 color: ModernColors.white,
