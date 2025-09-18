@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:syncc/core/color.dart';
+import 'package:afrosync/core/color.dart';
 
 class ModernTheme {
   static final ThemeData appTheme = ThemeData(

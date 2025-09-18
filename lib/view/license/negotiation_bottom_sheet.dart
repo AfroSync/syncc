@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/model/license_model.dart';
-import 'package:syncc/view/widget/text_title_widget.dart';
+import 'package:afrosync/model/license_model.dart';
+import 'package:afrosync/view/widget/text_title_widget.dart';
 
 import '../../core/color.dart';
 import '../../core/responsive.dart';

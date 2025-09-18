@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/core/color.dart';
-import 'package:syncc/core/responsive.dart';
-import 'package:syncc/core/routes.dart';
+import 'package:afrosync/core/color.dart';
+import 'package:afrosync/core/responsive.dart';
+import 'package:afrosync/core/routes.dart';
 
 class SplashBody extends StatelessWidget {
   const SplashBody({super.key});

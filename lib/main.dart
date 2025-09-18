@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:syncc/core/theme.dart';
-import 'package:syncc/core/router.dart';
-import 'package:syncc/core/web_performance.dart';
-import 'package:syncc/controller/audio/audio_service.dart';
+import 'package:afrosync/core/theme.dart';
+import 'package:afrosync/core/router.dart';
+import 'package:afrosync/core/web_performance.dart';
+import 'package:afrosync/controller/audio/audio_service.dart';
 
 import 'api/api_service.dart';
 

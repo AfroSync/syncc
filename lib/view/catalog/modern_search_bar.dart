@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:syncc/core/color.dart';
+import 'package:afrosync/core/color.dart';
 
 class ModernSearchBar extends StatefulWidget {
   final Function(String keyword) onSearch;

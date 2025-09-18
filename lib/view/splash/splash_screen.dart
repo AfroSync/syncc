@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/view/splash/splash_background.dart';
-import 'package:syncc/view/splash/splash_body.dart';
+import 'package:afrosync/view/splash/splash_background.dart';
+import 'package:afrosync/view/splash/splash_body.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -14,7 +14,7 @@ This folder contains the modular API services for the Syncc application.
 ### Initialize API Services
 
 ```dart
-import 'package:syncc/core/api/api_service.dart';
+import 'package:afrosync/core/api/api_service.dart';
 
 void main() {
   // Initialize all API services
@@ -25,7 +25,7 @@ void main() {
 ### Authentication API
 
 ```dart
-import 'package:syncc/core/api/api_service.dart';
+import 'package:afrosync/core/api/api_service.dart';
 
 // Sign up
 final response = await ApiService.instance.auth.signUp(
@@ -53,7 +53,7 @@ final profileResponse = await ApiService.instance.auth.getProfile(
 ### Tracks API
 
 ```dart
-import 'package:syncc/core/api/api_service.dart';
+import 'package:afrosync/core/api/api_service.dart';
 
 // Get tracks for homepage
 final tracksResponse = await ApiService.instance.tracks.getTracksHomepage(

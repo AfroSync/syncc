@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
-import 'package:syncc/controller/audio/audio_state.dart';
-import 'package:syncc/model/track_model.dart';
+import 'package:afrosync/controller/audio/audio_state.dart';
+import 'package:afrosync/model/track_model.dart';
 
 /// Audio service to handle track playback
 class AudioService {

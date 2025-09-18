@@ -1,14 +1,11 @@
+import 'package:afrosync/view/search/search_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:syncc/view/favourite/favourite_screen.dart';
-import 'package:syncc/view/profile/profile_screen.dart';
-import 'package:syncc/view/catalog/catalog_screen.dart';
-import 'package:syncc/view/license/license_screen.dart';
-import 'package:syncc/view/widget/modern_navigation.dart';
-import 'package:syncc/core/routes.dart';
-
-import 'license/delete.dart';
+import 'package:afrosync/view/profile/profile_screen.dart';
+import 'package:afrosync/view/catalog/catalog_screen.dart';
+import 'package:afrosync/view/license/license_screen.dart';
+import 'package:afrosync/view/widget/modern_navigation.dart';
+import 'package:afrosync/core/routes.dart';
 
 enum TabView {
   catalog(
@@ -17,9 +14,9 @@ enum TabView {
     icon: CupertinoIcons.music_albums_fill,
     route: ModernRoutes.catalog,
   ),
-  favourite(
-    name: 'Favourite',
-    icon: CupertinoIcons.heart_fill,
+  search(
+    name: 'Search',
+    icon: CupertinoIcons.search,
     route: ModernRoutes.catalog,
   ),
   license(
@@ -43,8 +40,8 @@ enum TabView {
         return const CatalogScreen();
       case TabView.license:
         return const LicenseScreen();
-      case TabView.favourite:
-        return const FavouriteScreen();
+      case TabView.search:
+        return const SearchScreen();
     }
   }
 }

@@ -3,6 +3,7 @@ import 'track_metadata.dart';
 class TrackModel {
   int id;
   String title;
+  String artistName;
   TrackMetadata metadata;
   DateTime releaseDate;
   int duration; // Duration in seconds
@@ -13,6 +14,7 @@ class TrackModel {
   TrackModel({
     this.id = 01,
     this.title = "Sample Track",
+    this.artistName = "Unknown Artist",
     TrackMetadata? metadata,
     DateTime? releaseDate,
     this.duration = 180, // 3 minutes in seconds
@@ -27,6 +29,7 @@ class TrackModel {
     return {
       'id': id,
       'title': title,
+      'artist_name': artistName,
       'metadata': metadata.toJson(),
       'release_date': releaseDate.toIso8601String().split('T')[0],
       // Format as YYYY-MM-DD
@@ -42,6 +45,7 @@ class TrackModel {
     return TrackModel(
       id: json['id'] as int? ?? 0,
       title: json['title'] as String? ?? "",
+      artistName: json['artist_name'] as String? ?? "Unknown Artist",
       metadata: json['metadata'] != null
           ? TrackMetadata.fromJson(json['metadata'] as Map<String, dynamic>)
           : TrackMetadata(),
@@ -59,6 +63,7 @@ class TrackModel {
   TrackModel copyWith({
     int? id,
     String? title,
+    String? artistName,
     TrackMetadata? metadata,
     DateTime? releaseDate,
     int? duration,
@@ -69,6 +74,7 @@ class TrackModel {
     return TrackModel(
       id: id ?? this.id,
       title: title ?? this.title,
+      artistName: artistName ?? this.artistName,
       metadata: metadata ?? this.metadata,
       releaseDate: releaseDate ?? this.releaseDate,
       duration: duration ?? this.duration,
@@ -80,7 +86,7 @@ class TrackModel {
 
   @override
   String toString() {
-    return 'TrackModel(id: $id, title: $title, genre: ${metadata.genre}, duration: ${duration}s)';
+    return 'TrackModel(id: $id, title: $title, artistName: $artistName, genre: ${metadata.genre}, duration: ${duration}s)';
   }
 
   @override
@@ -89,6 +95,7 @@ class TrackModel {
     return other is TrackModel &&
         other.id == id &&
         other.title == title &&
+        other.artistName == artistName &&
         other.metadata == metadata &&
         other.releaseDate == releaseDate &&
         other.duration == duration &&
@@ -101,6 +108,7 @@ class TrackModel {
   int get hashCode {
     return id.hashCode ^
         title.hashCode ^
+        artistName.hashCode ^
         metadata.hashCode ^
         releaseDate.hashCode ^
         duration.hashCode ^

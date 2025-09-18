@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:syncc/model/track_model.dart';
+import 'package:afrosync/model/track_model.dart';
 
 import '../../controller/audio/audio_state.dart';
 import '../../core/color.dart';

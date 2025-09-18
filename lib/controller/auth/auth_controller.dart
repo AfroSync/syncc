@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:syncc/model/user/user_model.dart';
-import 'package:syncc/model/user/artist_model.dart';
-import 'package:syncc/model/user/producer_model.dart';
-import 'package:syncc/model/enums/music_genre.dart';
+import 'package:afrosync/model/user/user_model.dart';
+import 'package:afrosync/model/user/artist_model.dart';
+import 'package:afrosync/model/user/producer_model.dart';
+import 'package:afrosync/model/enums/music_genre.dart';
 
 /// Auth state for managing user authentication
 class AuthState {

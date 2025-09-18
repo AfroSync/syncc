@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/model/enums/music_genre.dart';
+import 'package:afrosync/model/enums/music_genre.dart';
 
 import '../../core/color.dart';
 

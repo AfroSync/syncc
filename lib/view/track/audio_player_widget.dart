@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:syncc/controller/audio/audio_state.dart';
-import 'package:syncc/controller/audio/audio_service.dart';
-import 'package:syncc/core/color.dart';
-import 'package:syncc/model/track_model.dart';
+import 'package:afrosync/controller/audio/audio_state.dart';
+import 'package:afrosync/controller/audio/audio_service.dart';
+import 'package:afrosync/core/color.dart';
+import 'package:afrosync/model/track_model.dart';
 
 import '../catalog/track_screen.dart';
 
@@ -90,7 +90,7 @@ class AudioPlayerWidget extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            'Track ID: ${audioState.trackId ?? 'Unknown'}',
+                            audioState.track!.artistName,
                             style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,

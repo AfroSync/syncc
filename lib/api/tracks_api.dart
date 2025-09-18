@@ -1,4 +1,4 @@
-import 'package:syncc/model/tracks_response.dart';
+import 'package:afrosync/model/tracks_response.dart';
 import 'base.dart';
 
 /// Tracks API endpoints

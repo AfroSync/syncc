@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/model/user/producer_model.dart';
+import 'package:afrosync/model/user/producer_model.dart';
 
 import '../../core/color.dart';
 import '../../core/responsive.dart';

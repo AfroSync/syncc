@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/model/license_model.dart';
-import 'package:syncc/view/license/negotiation_bottom_sheet.dart';
+import 'package:afrosync/model/license_model.dart';
+import 'package:afrosync/view/license/negotiation_bottom_sheet.dart';
 
 import '../../core/color.dart';
 import '../../core/responsive.dart';
@@ -73,7 +73,7 @@ class _LicenseContractScreenState extends State<LicenseContractScreen> {
                     color: ModernColors.white,
                   ),
                   Text(
-                    "View Full Agreement",
+                    "View full agreement",
                     style: TextStyle(
                       color: ModernColors.white,
                       fontSize: 12,
@@ -223,7 +223,6 @@ class _LicenseContractScreenState extends State<LicenseContractScreen> {
                   ),
                   Text(
                     "Buy license",
-
                     style: TextStyle(fontSize: 16, color: ModernColors.white),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

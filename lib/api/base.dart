@@ -3,7 +3,8 @@ import 'package:flutter/foundation.dart';
 
 /// API configuration and base URL
 class ApiConfig {
-  static const String baseUrl = 'https://backend-f0qn.onrender.com';
+  static const String baseUrl =
+      'https://lively-helpful-monarch.ngrok-free.app/';
   static const Duration timeout = Duration(seconds: 30);
 }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/view/track/track_metadata_list_tile.dart';
+import 'package:afrosync/view/track/track_metadata_list_tile.dart';
 
 import '../../model/track_model.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/model/enums/country.dart';
-import 'package:syncc/view/widget/modern_text_field.dart';
+import 'package:afrosync/model/enums/country.dart';
+import 'package:afrosync/view/widget/modern_text_field.dart';
 
 import '../../core/color.dart';
 import '../../core/responsive.dart';

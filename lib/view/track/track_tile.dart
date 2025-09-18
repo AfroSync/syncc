@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:syncc/core/color.dart';
-import 'package:syncc/model/track_model.dart';
-import 'package:syncc/view/catalog/track_screen.dart';
-import 'package:syncc/controller/audio/audio_service.dart';
+import 'package:afrosync/core/color.dart';
+import 'package:afrosync/model/track_model.dart';
+import 'package:afrosync/view/catalog/track_screen.dart';
+import 'package:afrosync/controller/audio/audio_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../controller/audio/audio_state.dart';
@@ -11,8 +11,14 @@ import '../../controller/audio/audio_state.dart';
 class TrackTile extends StatefulWidget {
   final TrackModel track;
   final bool addHorizontalPadding;
+  final bool showArtist;
 
-  const TrackTile(this.track, {super.key, this.addHorizontalPadding = true});
+  const TrackTile(
+    this.track, {
+    super.key,
+    this.addHorizontalPadding = true,
+    this.showArtist = false,
+  });
 
   @override
   State<TrackTile> createState() => _TrackTileState();
@@ -50,50 +56,17 @@ class _TrackTileState extends State<TrackTile> {
             child: Row(
               children: [
                 Container(
-                  height: 60,
-                  width: 60,
+                  height: 50,
+                  width: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
                     color: ModernColors.textSecondary,
                   ),
                   clipBehavior: Clip.hardEdge,
-                  child: Stack(
-                    alignment: AlignmentGeometry.center,
-                    children: [
-                      SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: CachedNetworkImage(
-                          imageUrl: widget.track.coverArtUrl,
-                          fit: BoxFit.cover,
-                          errorWidget: (context, stuff, object) => SizedBox(),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsGeometry.all(12),
-                        child: IconButton.filled(
-                          onPressed: () {
-                            if (isCurrentTrack) {
-                              AudioService.instance.togglePlayPause();
-                            } else {
-                              AudioService.instance.playTrack(widget.track);
-                            }
-                          },
-                          style: IconButton.styleFrom(
-                            backgroundColor: Colors.white.withValues(
-                              alpha: 0.8,
-                            ),
-                          ),
-                          icon: Icon(
-                            isCurrentTrack && isPlaying
-                                ? CupertinoIcons.pause_fill
-                                : CupertinoIcons.play_fill,
-                            color: Colors.black87,
-                            size: 18,
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: CachedNetworkImage(
+                    imageUrl: widget.track.coverArtUrl,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, stuff, object) => SizedBox(),
                   ),
                 ),
                 SizedBox(width: 12),
@@ -111,16 +84,17 @@ class _TrackTileState extends State<TrackTile> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Text(
-                        widget.track.metadata.genre,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: ModernColors.textSecondary,
+                      if (widget.showArtist)
+                        Text(
+                          widget.track.artistName,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: ModernColors.textSecondary,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
                     ],
                   ),
                 ),
@@ -135,15 +109,29 @@ class _TrackTileState extends State<TrackTile> {
                 SizedBox(width: 12),
 
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (isCurrentTrack) {
+                      AudioService.instance.togglePlayPause();
+                    } else {
+                      AudioService.instance.playTrack(widget.track);
+                    }
+                  },
 
-                  icon: Icon(CupertinoIcons.heart, size: 24),
+                  icon: Icon(
+                    isCurrentTrack && isPlaying
+                        ? CupertinoIcons.pause_fill
+                        : CupertinoIcons.play_fill,
+                    color: Colors.black87,
+                    size: 18,
+                  ),
                 ),
-
-                IconButton(
-                  onPressed: () {},
-
-                  icon: Icon(Icons.more_horiz, size: 24),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(120),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Icon(Icons.more_vert, size: 24),
+                  ),
                 ),
               ],
             ),

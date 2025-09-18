@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/model/track_model.dart';
-import 'package:syncc/view/track/track_tile.dart';
+import 'package:afrosync/model/track_model.dart';
+import 'package:afrosync/view/track/track_tile.dart';
 
 import '../../api/api_service.dart';
 
@@ -22,7 +22,7 @@ class _CatalogTrackListState extends State<CatalogTrackList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       itemCount: widget.tracks.length,
       itemBuilder: (context, index) {
         final track = widget.tracks[index];

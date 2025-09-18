@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/core/color.dart';
-import 'package:syncc/core/routes.dart';
-import 'package:syncc/model/user/artist_model.dart';
-import 'package:syncc/view/widget/modern_country_picker.dart';
-import 'package:syncc/view/widget/modern_genre_picker.dart';
-import 'package:syncc/view/widget/modern_text_field.dart';
+import 'package:afrosync/core/color.dart';
+import 'package:afrosync/core/routes.dart';
+import 'package:afrosync/model/user/artist_model.dart';
+import 'package:afrosync/view/widget/modern_country_picker.dart';
+import 'package:afrosync/view/widget/modern_genre_picker.dart';
+import 'package:afrosync/view/widget/modern_text_field.dart';
 
 import '../../core/responsive.dart';
 import '../widget/modern_profile_picker.dart';

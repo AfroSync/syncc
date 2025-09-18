@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../catalog/modern_search_bar.dart';
 import '../widget/text_title_widget.dart';
 
-class FavouriteScreen extends StatefulWidget {
-  const FavouriteScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
 
   @override
-  State<FavouriteScreen> createState() => _FavouriteScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _FavouriteScreenState extends State<FavouriteScreen>
+class _SearchScreenState extends State<SearchScreen>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
@@ -17,10 +18,14 @@ class _FavouriteScreenState extends State<FavouriteScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context); // Required for AutomaticKeepAliveClientMixin
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [TextTitleWidget("Favorite")],
+        children: [
+          const TextTitleWidget("Search"),
+
+          ModernSearchBar(onSearch: (keyword) {}),
+        ],
       ),
     );
   }

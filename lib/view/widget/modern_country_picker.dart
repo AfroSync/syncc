@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/model/enums/country.dart';
+import 'package:afrosync/model/enums/country.dart';
 
 import '../../core/color.dart';
 

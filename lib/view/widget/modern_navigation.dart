@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/core/color.dart';
-import 'package:syncc/core/responsive.dart';
-import 'package:syncc/view/home_widget.dart';
-import 'package:syncc/view/track/audio_player_widget.dart';
+import 'package:afrosync/core/color.dart';
+import 'package:afrosync/core/responsive.dart';
+import 'package:afrosync/view/home_widget.dart';
+import 'package:afrosync/view/track/audio_player_widget.dart';
 
 class ModernNavigation extends StatefulWidget {
   final TabView? currentTab;

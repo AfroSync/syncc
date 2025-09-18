@@ -29,4 +29,7 @@ class ModernRoutes {
   // License payment route
   static String licensePayment(String licenseId) =>
       '/license/payment/$licenseId';
+
+  // Create track route
+  static const String createTrack = '/create/track';
 }

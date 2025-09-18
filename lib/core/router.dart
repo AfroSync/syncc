@@ -1,17 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:syncc/core/routes.dart';
-import 'package:syncc/view/auth/artist_signup_screen.dart';
-import 'package:syncc/view/auth/auth_choice_screen.dart';
-import 'package:syncc/view/auth/login_screen.dart';
-import 'package:syncc/view/auth/verification_screen.dart';
-import 'package:syncc/view/home_widget.dart';
-import 'package:syncc/view/auth/producer_signup_screen.dart';
-import 'package:syncc/view/splash/splash_screen.dart';
-import 'package:syncc/view/license/license_contract_screen.dart';
-import 'package:syncc/view/license/license_payment_screen.dart';
-import 'package:syncc/model/track_model.dart';
-import 'package:syncc/model/license_model.dart';
+import 'package:afrosync/core/routes.dart';
+import 'package:afrosync/view/auth/artist_signup_screen.dart';
+import 'package:afrosync/view/auth/auth_choice_screen.dart';
+import 'package:afrosync/view/auth/login_screen.dart';
+import 'package:afrosync/view/auth/verification_screen.dart';
+import 'package:afrosync/view/home_widget.dart';
+import 'package:afrosync/view/auth/producer_signup_screen.dart';
+import 'package:afrosync/view/splash/splash_screen.dart';
+import 'package:afrosync/view/license/license_contract_screen.dart';
+import 'package:afrosync/view/license/license_payment_screen.dart';
+import 'package:afrosync/view/track/create_track_screen.dart';
+import 'package:afrosync/model/track_model.dart';
+import 'package:afrosync/model/license_model.dart';
 
 import '../view/widget/error_screen.dart';
 
@@ -119,6 +120,13 @@ class ModernRouter {
           assert(licenseId.isNotEmpty, 'License ID should not be empty');
           return LicensePaymentScreen(license);
         },
+      ),
+
+      // Create track route
+      GoRoute(
+        path: ModernRoutes.createTrack,
+        name: 'create-track',
+        builder: (context, state) => const CreateTrackScreen(),
       ),
     ],
 

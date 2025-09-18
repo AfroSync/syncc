@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:syncc/model/track_model.dart';
-import 'package:syncc/view/catalog/catalog_track_list.dart';
-import 'package:syncc/view/widget/text_title_widget.dart';
-import 'package:syncc/view/track/audio_player_widget.dart';
+import 'package:afrosync/model/track_model.dart';
+import 'package:afrosync/view/catalog/catalog_track_list.dart';
+import 'package:afrosync/view/widget/text_title_widget.dart';
+import 'package:afrosync/view/track/audio_player_widget.dart';
 
 import '../../api/api_service.dart';
 import 'modern_search_bar.dart';
@@ -47,8 +47,7 @@ class _CatalogScreenState extends State<CatalogScreen>
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextTitleWidget("Browse Music"),
-          ModernSearchBar(onSearch: (keyword) {}),
+          TextTitleWidget("Featured Music"),
 
           Expanded(
             child: tracks.isEmpty
