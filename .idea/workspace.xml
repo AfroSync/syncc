@@ -4,42 +4,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add producer sign up flow">
-      <change afterPath="$PROJECT_DIR$/lib/model/license_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/track_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/user/user_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/auth/login_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_track_list.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/catalog/modern_search_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/catalog/track_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/favourite/favourite_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/license/delete.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/license/license_tile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/audio_progress_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/music_player_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/text_title_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/track_cover_image.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widget/track_tile.dart" afterDir="false" />
+    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add a lot of shit">
+      <change afterPath="$PROJECT_DIR$/lib/view/license/license_contract_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/license/license_payment_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/license/license_summary_list_tile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/license/negotiation_bottom_sheet.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/track/track_details_buttons.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/track/track_metadata_list_tile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/track/track_metadata_list_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/color.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/router.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/artist/artist_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/user/artist_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/producer/producer_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/user/producer_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/artist/artist_signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/artist_signup_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/auth/auth_choice_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/auth_choice_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/verification_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/license_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/license_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/catalog/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/profile/profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/error/error_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/error_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/producer/producer_signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/auth/producer_signup_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_background.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/catalog/catalog_track_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_track_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/catalog/track_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/track_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/profile/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/profile/profile_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_country_picker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_profile_picker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_build_config.md" beforeDir="false" afterPath="$PROJECT_DIR$/web_build_config.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/audio_player_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/track/audio_player_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/audio_progress_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/track/audio_progress_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/modern_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/modern_navigation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/music_player_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widget/music_player_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/track_cover_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/track/track_cover_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widget/track_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/track/track_tile.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,11 +91,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/view/track" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/lib/model/user" />
       <recent name="$PROJECT_DIR$/lib/view/profile" />
       <recent name="$PROJECT_DIR$/lib/view/license" />
-      <recent name="$PROJECT_DIR$/lib/view/favourite" />
     </key>
   </component>
   <component name="RunManager">
@@ -164,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758031179702</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add a lot of shit">
+      <option name="closed" value="true" />
+      <created>1758152447393</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758152447393</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -174,6 +170,7 @@
     <MESSAGE value="update artist sign up page" />
     <MESSAGE value="fix splash screen" />
     <MESSAGE value="add producer sign up flow" />
-    <option name="LAST_COMMIT_MESSAGE" value="add producer sign up flow" />
+    <MESSAGE value="add a lot of shit" />
+    <option name="LAST_COMMIT_MESSAGE" value="add a lot of shit" />
   </component>
 </project>

@@ -22,4 +22,11 @@ class ModernRoutes {
   static const String profile = '$home/profile';
   static const String catalog = '$home/catalog';
   static const String license = '$home/license';
+
+  // License contract route
+  static String licenseContract(String trackId) => '/license/contract/$trackId';
+
+  // License payment route
+  static String licensePayment(String licenseId) =>
+      '/license/payment/$licenseId';
 }

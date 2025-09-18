@@ -1,6 +1,8 @@
 // Base enums for common license parameters
 enum LicenseType { exclusive, nonExclusive, semiExclusive }
 
+class LicenseModel {}
+
 enum Territory {
   nigeria('Nigeria'),
   westAfrica('West Africa'),

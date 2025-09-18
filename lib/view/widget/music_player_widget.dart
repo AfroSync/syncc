@@ -4,7 +4,7 @@ import 'package:syncc/model/track_model.dart';
 
 import '../../controller/audio/audio_state.dart';
 import '../../core/color.dart';
-import 'audio_progress_bar.dart';
+import '../track/audio_progress_bar.dart';
 
 class MusicPlayerWidget extends StatefulWidget {
   const MusicPlayerWidget({super.key});

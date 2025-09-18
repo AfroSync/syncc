@@ -109,7 +109,6 @@ class SplashBody extends StatelessWidget {
                     ),
                     Text(
                       "Fops",
-
                       style: TextStyle(
                         color: ModernColors.white,
                         fontWeight: FontWeight.w700,
@@ -117,6 +116,7 @@ class SplashBody extends StatelessWidget {
                         height: 1,
                       ),
                     ),
+                    SizedBox(height: 12),
                   ],
                 ),
               ],

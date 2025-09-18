@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncc/model/track_model.dart';
-import 'package:syncc/view/widget/track_tile.dart';
+import 'package:syncc/view/track/track_tile.dart';
 
 import '../../api/api_service.dart';
 

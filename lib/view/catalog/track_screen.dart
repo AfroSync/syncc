@@ -6,6 +6,9 @@ import 'package:syncc/view/widget/modern_profile_picker.dart';
 
 import '../../controller/audio/audio_state.dart';
 import '../../core/color.dart';
+import '../../core/responsive.dart';
+import '../track/track_details_buttons.dart';
+import '../track/track_metadata_list_view.dart';
 
 class TrackScreen extends StatefulWidget {
   final TrackModel track;
@@ -34,35 +37,29 @@ class _TrackScreenState extends State<TrackScreen> {
         return Scaffold(
           appBar: AppBar(),
           body: SingleChildScrollView(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
             child: Column(
               children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: 300,
-                    maxHeight: 300,
-                    minHeight: 200,
-                    minWidth: 200,
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: ModernColors.textSecondary,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: 240,
+                      maxHeight: 240,
+                      minHeight: 100,
+                      minWidth: 100,
                     ),
-                    clipBehavior: Clip.hardEdge,
-                    child: SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: CachedNetworkImage(
-                        imageUrl: widget.track.coverArtUrl,
-                        fit: BoxFit.cover,
-                        errorWidget: (context, stuff, object) => SizedBox(),
-                      ),
+                    child: CachedNetworkImage(
+                      imageUrl: widget.track.coverArtUrl,
+                      fit: BoxFit.cover,
+                      errorWidget: (context, stuff, object) => SizedBox(),
                     ),
                   ),
                 ),
                 SizedBox(height: 12),
                 Text(
-                  widget.track.title,
+                  "the day i met her" ?? widget.track.title,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -71,60 +68,70 @@ class _TrackScreenState extends State<TrackScreen> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(120),
-                      
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: ModernColors.textSecondary,
-                        ),
-                        clipBehavior: Clip.hardEdge,
-                        child: CachedNetworkImage(
-                          imageUrl: widget.track.coverArtUrl ?? "",
-                          fit: BoxFit.cover,
-                          errorWidget: (context, stuff, object) => SizedBox(),
-                        ),
-                      ),
-                    ),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 8,
+                  children: [
                     Text(
-                      widget.track.metadata.genre,
+                      ("Bolexyro" ?? widget.track.coverArtUrl).toUpperCase(),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        color: ModernColors.textSecondary,
+                        color: ModernColors.text,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      "•",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: ModernColors.text,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      _formatDuration(widget.track.duration).toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: ModernColors.text,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      "•",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: ModernColors.text,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      widget.track.releaseDate.year.toString(),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: ModernColors.text,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
-                Text(
-                  _formatDuration(widget.track.duration),
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: ModernColors.text,
-                  ),
-                ),
-                SizedBox(width: 12),
 
-                IconButton(
-                  onPressed: () {},
+                SizedBox(height: 16),
 
-                  icon: Icon(CupertinoIcons.heart, size: 24),
-                ),
+                TrackDetailsButtons(widget.track),
+                SizedBox(height: 24),
 
-                IconButton(
-                  onPressed: () {},
-
-                  icon: Icon(Icons.more_horiz, size: 24),
-                ),
+                TrackMetadataListView(widget.track),
               ],
             ),
           ),

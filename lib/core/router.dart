@@ -8,6 +8,10 @@ import 'package:syncc/view/auth/verification_screen.dart';
 import 'package:syncc/view/home_widget.dart';
 import 'package:syncc/view/auth/producer_signup_screen.dart';
 import 'package:syncc/view/splash/splash_screen.dart';
+import 'package:syncc/view/license/license_contract_screen.dart';
+import 'package:syncc/view/license/license_payment_screen.dart';
+import 'package:syncc/model/track_model.dart';
+import 'package:syncc/model/license_model.dart';
 
 import '../view/widget/error_screen.dart';
 
@@ -85,6 +89,36 @@ class ModernRouter {
                 const HomeWidget(defaultTab: TabView.license),
           ),
         ],
+      ),
+
+      // License contract route
+      GoRoute(
+        path: '/license/contract/:trackId',
+        name: 'license-contract',
+        builder: (context, state) {
+          final trackIdString = state.pathParameters['trackId'] ?? '1';
+          final trackId = int.tryParse(trackIdString) ?? 1;
+          // For now, create a dummy track model with the trackId
+          // In a real app, you'd fetch the track from an API or pass it through extra
+          final track = TrackModel(id: trackId);
+          return LicenseContractScreen(track);
+        },
+      ),
+
+      // License payment route
+      GoRoute(
+        path: '/license/payment/:licenseId',
+        name: 'license-payment',
+        builder: (context, state) {
+          final licenseId = state.pathParameters['licenseId'] ?? '1';
+          // For now, create a dummy license model with the licenseId
+          // In a real app, you'd fetch the license from an API using licenseId
+          // TODO: Use licenseId to fetch actual license data
+          final license = LicenseModel();
+          // Using licenseId in debug mode to avoid unused variable warning
+          assert(licenseId.isNotEmpty, 'License ID should not be empty');
+          return LicensePaymentScreen(license);
+        },
       ),
     ],
 
