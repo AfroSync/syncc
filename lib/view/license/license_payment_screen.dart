@@ -4,6 +4,7 @@ import 'package:afrosync/view/widget/text_title_widget.dart';
 
 import '../../core/color.dart';
 import '../../core/responsive.dart';
+import '../../core/pdf_service.dart';
 import '../../model/license_model.dart';
 
 class LicensePaymentScreen extends StatefulWidget {
@@ -16,6 +17,35 @@ class LicensePaymentScreen extends StatefulWidget {
 }
 
 class _LicensePaymentScreenState extends State<LicensePaymentScreen> {
+  late final PdfService _pdfService;
+
+  @override
+  void initState() {
+    super.initState();
+    _pdfService = PdfService.fromServiceLocator;
+  }
+
+  Future<void> _openLicenseAgreement() async {
+    try {
+      final success = await _pdfService.openLicenseAgreement(context: context);
+      if (!success && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Failed to open license agreement. Please try again.',
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error opening license agreement: $e')),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final bool isMobile = Responsive.isMobile(context);
@@ -74,7 +104,7 @@ class _LicensePaymentScreenState extends State<LicensePaymentScreen> {
             ),
             SizedBox(height: 12),
             TextButton(
-              onPressed: () {},
+              onPressed: _openLicenseAgreement,
               style: TextButton.styleFrom(
                 padding: isMobile
                     ? EdgeInsetsGeometry.symmetric(vertical: 8, horizontal: 16)

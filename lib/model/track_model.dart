@@ -1,4 +1,6 @@
 import 'track_metadata.dart';
+import 'license_model.dart';
+import 'basic_license.dart';
 
 class TrackModel {
   int id;
@@ -10,19 +12,22 @@ class TrackModel {
   String description;
   String trackUrl;
   String coverArtUrl;
+  LicenseModel license;
 
   TrackModel({
-    this.id = 01,
+    this.id = 1,
     this.title = "Sample Track",
     this.artistName = "Unknown Artist",
     TrackMetadata? metadata,
     DateTime? releaseDate,
-    this.duration = 180, // 3 minutes in seconds
+    this.duration = 135, // 2 minutes in seconds
     this.description = "Sample track description",
     this.trackUrl = "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav",
     this.coverArtUrl = "https://via.placeholder.com/300x300",
+    LicenseModel? license,
   }) : metadata = metadata ?? TrackMetadata(),
-       releaseDate = releaseDate ?? DateTime.now();
+       releaseDate = releaseDate ?? DateTime.now(),
+       license = license ?? const LicenseModel();
 
   // toJson method
   Map<String, dynamic> toJson() {
@@ -37,6 +42,7 @@ class TrackModel {
       'description': description,
       'track_url': trackUrl,
       'cover_art_url': coverArtUrl,
+      'license': license.toJson(),
     };
   }
 
@@ -46,8 +52,8 @@ class TrackModel {
       id: json['id'] as int? ?? 0,
       title: json['title'] as String? ?? "",
       artistName: json['artist_name'] as String? ?? "Unknown Artist",
-      metadata: json['metadata'] != null
-          ? TrackMetadata.fromJson(json['metadata'] as Map<String, dynamic>)
+      metadata: json['metadata_'] != null
+          ? TrackMetadata.fromJson(json['metadata_'] as Map<String, dynamic>)
           : TrackMetadata(),
       releaseDate: json['release_date'] != null
           ? DateTime.parse(json['release_date'] as String)
@@ -56,6 +62,9 @@ class TrackModel {
       description: json['description'] as String? ?? "",
       trackUrl: json['track_url'] as String? ?? "",
       coverArtUrl: json['cover_art_url'] as String? ?? "",
+      license: json['license'] != null
+          ? LicenseModel.fromJson(json['license'] as Map<String, dynamic>)
+          : const LicenseModel(),
     );
   }
 
@@ -70,6 +79,7 @@ class TrackModel {
     String? description,
     String? trackUrl,
     String? coverArtUrl,
+    LicenseModel? license,
   }) {
     return TrackModel(
       id: id ?? this.id,
@@ -81,6 +91,7 @@ class TrackModel {
       description: description ?? this.description,
       trackUrl: trackUrl ?? this.trackUrl,
       coverArtUrl: coverArtUrl ?? this.coverArtUrl,
+      license: license ?? this.license,
     );
   }
 
@@ -101,7 +112,8 @@ class TrackModel {
         other.duration == duration &&
         other.description == description &&
         other.trackUrl == trackUrl &&
-        other.coverArtUrl == coverArtUrl;
+        other.coverArtUrl == coverArtUrl &&
+        other.license == license;
   }
 
   @override
@@ -114,6 +126,7 @@ class TrackModel {
         duration.hashCode ^
         description.hashCode ^
         trackUrl.hashCode ^
-        coverArtUrl.hashCode;
+        coverArtUrl.hashCode ^
+        license.hashCode;
   }
 }

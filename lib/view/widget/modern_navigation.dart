@@ -184,7 +184,9 @@ class ModernNavigationTab extends StatelessWidget {
               Text(
                 tab.name,
                 style: TextStyle(
-                  color: isSelected ? ModernColors.primary : ModernColors.text,
+                  color: isSelected
+                      ? ModernColors.primary
+                      : ModernColors.textSecondary,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),

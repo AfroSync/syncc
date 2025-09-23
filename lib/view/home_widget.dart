@@ -11,20 +11,24 @@ enum TabView {
   catalog(
     name: 'Catalog',
 
-    icon: CupertinoIcons.music_albums_fill,
+    icon: CupertinoIcons.music_albums,
     route: ModernRoutes.catalog,
   ),
   search(
-    name: 'Search',
-    icon: CupertinoIcons.search,
-    route: ModernRoutes.catalog,
+    name: 'Finder',
+    icon: CupertinoIcons.search_circle,
+    route: ModernRoutes.search,
   ),
   license(
     name: 'License',
     icon: CupertinoIcons.doc_append,
     route: ModernRoutes.license,
   ),
-  profile(name: 'Profile', icon: Icons.person, route: ModernRoutes.profile);
+  profile(
+    name: 'Profile',
+    icon: CupertinoIcons.person,
+    route: ModernRoutes.profile,
+  );
 
   const TabView({required this.name, required this.icon, required this.route});
 

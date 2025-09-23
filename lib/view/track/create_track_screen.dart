@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:audio_metadata_reader/audio_metadata_reader.dart';
-import 'dart:io';
 
 import '../../core/color.dart';
 import '../../core/responsive.dart' show Responsive;
-import '../../model/track_model.dart';
-import '../../model/track_metadata.dart';
+import '../../controller/track/track_creation_service.dart';
 
 class CreateTrackScreen extends StatefulWidget {
   const CreateTrackScreen({super.key});
@@ -17,84 +12,46 @@ class CreateTrackScreen extends StatefulWidget {
 }
 
 class _CreateTrackScreenState extends State<CreateTrackScreen> {
-  File? trackFile;
-  TrackModel? trackModel;
-  bool isLoading = false;
-  String? errorMessage;
+  late final TrackCreationService _trackCreationService;
+
+  @override
+  void initState() {
+    super.initState();
+    _trackCreationService = TrackCreationService.fromServiceLocator;
+  }
 
   Future<void> _uploadTrack() async {
-    try {
-      setState(() {
-        isLoading = true;
-        errorMessage = null;
-      });
+    // Pick audio file
+    final file = await _trackCreationService.pickAudioFile();
+    if (file != null) {
+      setState(() {});
 
-      // Pick audio file
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.audio,
-        allowMultiple: false,
-      );
-
-      if (result != null && result.files.single.path != null) {
-        final file = File(result.files.single.path!);
-
-        // Extract metadata using audio_metadata_reader
-        final metadata = readMetadata(file, getImage: true);
-
-        // Create TrackModel from metadata
-        final track = TrackModel(
-          id: DateTime.now().millisecondsSinceEpoch,
-          // Temporary ID
-          title: metadata.title ?? 'Unknown Title',
-          artistName: metadata.artist ?? 'Unknown Artist',
-          description: metadata.album ?? '',
-          // Using album as description fallback
-          duration: metadata.duration?.inSeconds ?? 0,
-          trackUrl: file.path,
-          // Local file path for now
-          coverArtUrl: '',
-          // Album art not available in this version
-          releaseDate: DateTime(
-            metadata.year is int ? metadata.year as int : DateTime.now().year,
-          ),
-          metadata: TrackMetadata(
-            genre: 'Unknown',
-            // Genre not available in this version
-            mood: 'Unknown',
-            // Not available in metadata
-            instrumentation: [],
-            // Not available in metadata
-            sceneSuitability: [],
-            // Not available in metadata
-            build: 'Unknown',
-            // Not available in metadata
-            vocalType: 'Unknown',
-            // Not available in metadata
-            tempo: 'Unknown',
-            // Not available in metadata
-            instrumentalOnly: false,
-            // Not available in metadata
-            lyricalOnly: false, // Not available in metadata
-          ),
-        );
-
-        setState(() {
-          trackFile = file;
-          trackModel = track;
-          isLoading = false;
-        });
-      } else {
-        setState(() {
-          isLoading = false;
-          errorMessage = 'No file selected';
-        });
-      }
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-        errorMessage = 'Error uploading track: $e';
-      });
+      // Extract metadata
+      await _trackCreationService.extractMetadata();
+      setState(() {});
     }
+  }
+
+  Future<void> _saveTrack() async {
+    final success = await _trackCreationService.saveTrack();
+    if (success && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Track saved successfully!')),
+      );
+    } else if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            _trackCreationService.errorMessage ?? 'Failed to save track',
+          ),
+        ),
+      );
+    }
+  }
+
+  void _resetTrack() {
+    _trackCreationService.reset();
+    setState(() {});
   }
 
   @override
@@ -102,27 +59,17 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
     final bool isMobile = Responsive.isMobile(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create Track'),
-        backgroundColor: ModernColors.background,
-        foregroundColor: ModernColors.text,
-      ),
+      appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (trackFile == null) ...[
-              Spacer(),
+            if (!_trackCreationService.hasFile) ...[
+              Spacer(flex: 2),
               Center(
                 child: Column(
                   children: [
-                    Icon(
-                      CupertinoIcons.double_music_note,
-                      size: 64,
-                      color: ModernColors.textSecondary,
-                    ),
-                    const SizedBox(height: 16),
                     Text(
                       'Upload your track',
                       style: TextStyle(
@@ -134,14 +81,19 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                     const SizedBox(height: 8),
                     Text(
                       'Select an audio file to extract metadata and create your track',
-                      style: TextStyle(color: ModernColors.textSecondary),
+                      style: TextStyle(
+                        color: ModernColors.textSecondary,
+                        fontSize: 16,
+                      ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 12),
                     SizedBox(
-                      height: 48,
+                      height: 40,
                       child: TextButton(
-                        onPressed: isLoading ? null : _uploadTrack,
+                        onPressed: _trackCreationService.isLoading
+                            ? null
+                            : _uploadTrack,
                         style: TextButton.styleFrom(
                           padding: isMobile
                               ? const EdgeInsets.symmetric(
@@ -152,19 +104,20 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                           backgroundColor: ModernColors.activeBlue,
                           foregroundColor: ModernColors.white,
                         ),
-                        child: isLoading
+                        child: _trackCreationService.isLoading
                             ? const SizedBox(
                                 width: 20,
                                 height: 20,
                                 child: CircularProgressIndicator.adaptive(
                                   strokeWidth: 2,
+
                                   valueColor: AlwaysStoppedAnimation<Color>(
                                     Colors.white,
                                   ),
                                 ),
                               )
                             : const Text(
-                                "Upload Track",
+                                "Browse files",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -172,7 +125,7 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                               ),
                       ),
                     ),
-                    if (errorMessage != null) ...[
+                    if (_trackCreationService.errorMessage != null) ...[
                       const SizedBox(height: 16),
                       Container(
                         padding: const EdgeInsets.all(12),
@@ -184,7 +137,7 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                           ),
                         ),
                         child: Text(
-                          errorMessage!,
+                          _trackCreationService.errorMessage!,
                           style: const TextStyle(color: Colors.red),
                         ),
                       ),
@@ -192,7 +145,7 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                   ],
                 ),
               ),
-              Spacer(flex: 2),
+              Spacer(flex: 3),
             ] else ...[
               // Track details section
               Text(
@@ -204,7 +157,7 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              if (trackModel != null) ...[
+              if (_trackCreationService.hasTrack) ...[
                 // Show extracted metadata
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -218,21 +171,39 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildMetadataRow('Title', trackModel!.title),
-                      _buildMetadataRow('Artist', trackModel!.artistName),
-                      _buildMetadataRow('Genre', trackModel!.metadata.genre),
+                      _buildMetadataRow(
+                        'Title',
+                        _trackCreationService.currentTrackModel!.title,
+                      ),
+                      _buildMetadataRow(
+                        'Artist',
+                        _trackCreationService.currentTrackModel!.artistName,
+                      ),
+                      _buildMetadataRow(
+                        'Genre',
+                        _trackCreationService.currentTrackModel!.metadata.genre,
+                      ),
                       _buildMetadataRow(
                         'Duration',
-                        _formatDuration(trackModel!.duration),
+                        _trackCreationService.formatDuration(
+                          _trackCreationService.currentTrackModel!.duration,
+                        ),
                       ),
                       _buildMetadataRow(
                         'Release Year',
-                        trackModel!.releaseDate.year.toString(),
+                        _trackCreationService
+                            .currentTrackModel!
+                            .releaseDate
+                            .year
+                            .toString(),
                       ),
-                      if (trackModel!.description.isNotEmpty)
+                      if (_trackCreationService
+                          .currentTrackModel!
+                          .description
+                          .isNotEmpty)
                         _buildMetadataRow(
                           'Description',
-                          trackModel!.description,
+                          _trackCreationService.currentTrackModel!.description,
                         ),
                     ],
                   ),
@@ -242,13 +213,7 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                   children: [
                     Expanded(
                       child: OutlinedButton(
-                        onPressed: () {
-                          setState(() {
-                            trackFile = null;
-                            trackModel = null;
-                            errorMessage = null;
-                          });
-                        },
+                        onPressed: _resetTrack,
                         style: OutlinedButton.styleFrom(
                           foregroundColor: ModernColors.text,
                           side: BorderSide(color: ModernColors.textSecondary),
@@ -259,14 +224,7 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
                     const SizedBox(width: 16),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {
-                          // TODO: Save track to database/API
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Track saved successfully!'),
-                            ),
-                          );
-                        },
+                        onPressed: _saveTrack,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: ModernColors.primary,
                           foregroundColor: ModernColors.white,
@@ -312,11 +270,5 @@ class _CreateTrackScreenState extends State<CreateTrackScreen> {
         ],
       ),
     );
-  }
-
-  String _formatDuration(int seconds) {
-    final minutes = seconds ~/ 60;
-    final remainingSeconds = seconds % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
   }
 }

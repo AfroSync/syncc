@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:afrosync/model/track_model.dart';
 
 /// Simple audio state management for track playback
@@ -53,12 +54,19 @@ class AudioState {
 }
 
 /// Global audio state manager
+///
+/// This class manages the global audio state and is registered as a singleton
+/// in the service locator to maintain state across the app lifecycle.
 class AudioStateManager extends ValueNotifier<AudioState> {
   AudioStateManager._() : super(const AudioState());
 
   static final AudioStateManager _instance = AudioStateManager._();
 
   static AudioStateManager get instance => _instance;
+
+  /// Get the instance from service locator (preferred method)
+  static AudioStateManager get fromServiceLocator =>
+      GetIt.instance<AudioStateManager>();
 
   /// Play a track
   void playTrack(TrackModel track) {

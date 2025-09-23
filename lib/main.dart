@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:afrosync/core/theme.dart';
 import 'package:afrosync/core/router.dart';
 import 'package:afrosync/core/web_performance.dart';
-import 'package:afrosync/controller/audio/audio_service.dart';
+import 'package:afrosync/core/service_locator.dart';
 
 import 'api/api_service.dart';
 
@@ -13,8 +13,8 @@ void main() async {
   // Initialize API service
   ApiService.instance.initialize();
 
-  // Initialize audio service
-  await AudioService.instance.initialize();
+  // Initialize service locator and all services
+  await initializeServices();
 
   runApp(const SynccApp());
 }

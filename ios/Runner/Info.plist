@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Syncc</string>
+	<string>AfroSync</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,5 +45,26 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to your photo library to select cover art images for your tracks.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs access to your camera to take photos for track cover art.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app needs access to your microphone to record audio tracks.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>This app needs access to your music library to import tracks.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

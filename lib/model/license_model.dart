@@ -7,8 +7,8 @@ class LicenseModel {
   const LicenseModel({this.amount = '', TermsModel? terms})
     : terms = terms ?? const TermsModel();
 
-  Map<String, dynamic> toMap() {
-    return {'amount': amount, 'terms': terms.toMap()};
+  Map<String, dynamic> toJson() {
+    return {'amount': amount, 'terms': terms.toJson()};
   }
 
   factory LicenseModel.fromJson(Map<String, dynamic> json) {
@@ -71,20 +71,28 @@ class TermsModel {
     this.terminationTriggers = const [],
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
-      'paymentPresets': paymentPresets.map((e) => e.name).toList(),
-      'territoryPresets': territoryPresets.map((e) => e.name).toList(),
-      'exclusivityPresets': exclusivityPresets.map((e) => e.name).toList(),
-      'usageRightsPresets': usageRightsPresets.map((e) => e.name).toList(),
-      'performingRightsPresets': performingRightsPresets
-          .map((e) => e.name)
+      'paymentPresets': paymentPresets.map((e) => e.categoryName).toList(),
+      'territoryPresets': territoryPresets.map((e) => e.categoryName).toList(),
+      'exclusivityPresets': exclusivityPresets
+          .map((e) => e.categoryName)
           .toList(),
-      'approvalLevels': approvalLevels.map((e) => e.name).toList(),
-      'creditPresets': creditPresets.map((e) => e.name).toList(),
-      'modificationLevels': modificationLevels.map((e) => e.name).toList(),
-      'renewalOptions': renewalOptions.map((e) => e.name).toList(),
-      'terminationTriggers': terminationTriggers.map((e) => e.name).toList(),
+      'usageRightsPresets': usageRightsPresets
+          .map((e) => e.categoryName)
+          .toList(),
+      'performingRightsPresets': performingRightsPresets
+          .map((e) => e.categoryName)
+          .toList(),
+      'approvalLevels': approvalLevels.map((e) => e.categoryName).toList(),
+      'creditPresets': creditPresets.map((e) => e.categoryName).toList(),
+      'modificationLevels': modificationLevels
+          .map((e) => e.categoryName)
+          .toList(),
+      'renewalOptions': renewalOptions.map((e) => e.categoryName).toList(),
+      'terminationTriggers': terminationTriggers
+          .map((e) => e.categoryName)
+          .toList(),
     };
   }
 
@@ -92,104 +100,54 @@ class TermsModel {
     return TermsModel(
       paymentPresets:
           (json['paymentPresets'] as List<dynamic>?)
-              ?.map(
-                (e) => PaymentPresets.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => PaymentPresets.student,
-                ),
-              )
+              ?.map((e) => PaymentPresets())
               .toList() ??
-          [],
+          const [],
       territoryPresets:
           (json['territoryPresets'] as List<dynamic>?)
-              ?.map(
-                (e) => TerritoryPresets.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => TerritoryPresets.local,
-                ),
-              )
+              ?.map((e) => TerritoryPresets())
               .toList() ??
-          [],
+          const [],
       exclusivityPresets:
           (json['exclusivityPresets'] as List<dynamic>?)
-              ?.map(
-                (e) => ExclusivityPresets.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => ExclusivityPresets.nonExclusive,
-                ),
-              )
+              ?.map((e) => ExclusivityPresets())
               .toList() ??
-          [],
+          const [],
       usageRightsPresets:
           (json['usageRightsPresets'] as List<dynamic>?)
-              ?.map(
-                (e) => UsageRightsPresets.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => UsageRightsPresets.basic,
-                ),
-              )
+              ?.map((e) => UsageRightsPresets())
               .toList() ??
-          [],
+          const [],
       performingRightsPresets:
           (json['performingRightsPresets'] as List<dynamic>?)
-              ?.map(
-                (e) => PerformingRightsPresets.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => PerformingRightsPresets.keepRoyalties,
-                ),
-              )
+              ?.map((e) => PerformingRightsPresets())
               .toList() ??
-          [],
+          const [],
       approvalLevels:
           (json['approvalLevels'] as List<dynamic>?)
-              ?.map(
-                (e) => ApprovalLevels.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => ApprovalLevels.none,
-                ),
-              )
+              ?.map((e) => ApprovalLevels())
               .toList() ??
-          [],
+          const [],
       creditPresets:
           (json['creditPresets'] as List<dynamic>?)
-              ?.map(
-                (e) => CreditPresets.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => CreditPresets.none,
-                ),
-              )
+              ?.map((e) => CreditPresets())
               .toList() ??
-          [],
+          const [],
       modificationLevels:
           (json['modificationLevels'] as List<dynamic>?)
-              ?.map(
-                (e) => ModificationLevels.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => ModificationLevels.prohibited,
-                ),
-              )
+              ?.map((e) => ModificationLevels())
               .toList() ??
-          [],
+          const [],
       renewalOptions:
           (json['renewalOptions'] as List<dynamic>?)
-              ?.map(
-                (e) => RenewalOptions.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => RenewalOptions.noRenewal,
-                ),
-              )
+              ?.map((e) => RenewalOptions())
               .toList() ??
-          [],
+          const [],
       terminationTriggers:
           (json['terminationTriggers'] as List<dynamic>?)
-              ?.map(
-                (e) => TerminationTriggers.values.firstWhere(
-                  (preset) => preset.name == e,
-                  orElse: () => TerminationTriggers.standard,
-                ),
-              )
+              ?.map((e) => TerminationTriggers())
               .toList() ??
-          [],
+          const [],
     );
   }
 

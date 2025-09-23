@@ -1,7 +1,8 @@
+import 'package:afrosync/model/enums/license_terms.dart';
+import 'package:afrosync/view/license/production_license_list_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:afrosync/model/license_model.dart';
 import 'package:afrosync/view/license/negotiation_bottom_sheet.dart';
 
 import '../../core/color.dart';
@@ -20,6 +21,19 @@ class LicenseContractScreen extends StatefulWidget {
 }
 
 class _LicenseContractScreenState extends State<LicenseContractScreen> {
+  final List<BaseTerm> terms = [
+    // PaymentPresets(),
+    TerritoryPresets(),
+    ExclusivityPresets(),
+    UsageRightsPresets(),
+    PerformingRightsPresets(),
+    ApprovalLevels(),
+    CreditPresets(),
+    ModificationLevels(),
+    RenewalOptions(),
+    TerminationTriggers(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final bool isMobile = Responsive.isMobile(context);
@@ -104,7 +118,7 @@ class _LicenseContractScreenState extends State<LicenseContractScreen> {
 
                     children: [
                       Text(
-                        "the day i met her",
+                        widget.track.title,
 
                         style: TextStyle(
                           fontSize: 18,
@@ -112,7 +126,7 @@ class _LicenseContractScreenState extends State<LicenseContractScreen> {
                         ),
                       ),
                       Text(
-                        "Bolexyro",
+                        widget.track.artistName,
                         style: TextStyle(
                           fontSize: 14,
                           color: ModernColors.textSecondary,
@@ -149,33 +163,13 @@ class _LicenseContractScreenState extends State<LicenseContractScreen> {
               ],
             ),
             Divider(thickness: 0.7),
-            LicenseSummaryListTile(title: 'License for', value: 'No U-Turn'),
-            LicenseSummaryListTile(
-              title: 'Exclusivity',
-              value: 'Non-exclusivity',
-            ),
-
-            LicenseSummaryListTile(title: 'Territory', value: 'Worldwide'),
-            LicenseSummaryListTile(title: 'Credit', value: 'Standard'),
-            LicenseSummaryListTile(title: 'Approval', value: 'Context only'),
-            LicenseSummaryListTile(title: 'Renewal', value: 'None'),
-            LicenseSummaryListTile.list(
-              title: 'Usage Rights',
-              values: ['Streaming', 'Sequels', 'Trailers/Promo'],
-            ),
-            LicenseSummaryListTile(
-              title: 'Termination Agreement',
-              value: 'Standard',
-            ),
-            LicenseSummaryListTile(
-              title: 'Performing Rights (Royalties)',
-              value: 'None',
-            ),
+            ProductionLicenseListTile(title: 'License for', value: 'No U-Turn'),
+            ...terms.map((term) => LicenseSummaryListTile<BaseTerm>(term)),
             Divider(thickness: 0.7),
             SizedBox(height: 20),
             OutlinedButton(
               onPressed: () {
-                NegotiationBottomSheet.show(context, LicenseModel());
+                NegotiationBottomSheet.show(context, terms);
               },
 
               style: OutlinedButton.styleFrom(

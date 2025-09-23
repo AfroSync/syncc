@@ -21,11 +21,8 @@ class _SearchScreenState extends State<SearchScreen>
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const TextTitleWidget("Search"),
-
-          ModernSearchBar(onSearch: (keyword) {}),
-        ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [ModernSearchBar(onSearch: (keyword) {})],
       ),
     );
   }

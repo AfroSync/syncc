@@ -25,11 +25,14 @@ class TrackMetadataListTile extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           Spacer(),
-          Text(
-            value,
-            style: TextStyle(fontSize: 16, color: ModernColors.text),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+          Expanded(
+            child: Text(
+              value,
+              textAlign: TextAlign.end,
+              style: TextStyle(fontSize: 16, color: ModernColors.text),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

@@ -16,10 +16,83 @@ class TrackMetadataListView extends StatelessWidget {
       children: [
         Text("Metadata", style: TextStyle(fontSize: 18, height: 1)),
         Divider(),
-        TrackMetadataListTile(title: "Name", value: "the day i met her"),
+
+        // Basic track info
+        TrackMetadataListTile(
+          title: "Release Year",
+          value: track.releaseDate.year.toString(),
+        ),
+
         Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
-        TrackMetadataListTile(title: "Artist", value: "Bolexyro"),
+        TrackMetadataListTile(title: "Genre", value: track.metadata.genre),
+
+        if (track.metadata.mood != 'Unknown') ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(title: "Mood", value: track.metadata.mood),
+        ],
+        if (track.metadata.tempo != 'Unknown') ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(title: "Tempo", value: track.metadata.tempo),
+        ],
+        if (track.metadata.build != 'Unknown') ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(title: "Build", value: track.metadata.build),
+        ],
+        if (track.metadata.vocalType != 'Unknown') ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(
+            title: "Vocal Type",
+            value: track.metadata.vocalType,
+          ),
+        ],
+
+        // Instrumentation
+        if (track.metadata.instrumentation.isNotEmpty) ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(
+            title: "Instrumentation",
+            value: track.metadata.instrumentation.join(", "),
+          ),
+        ],
+
+        // Scene suitability
+        if (track.metadata.sceneSuitability.isNotEmpty) ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(
+            title: "Scene Suitability",
+            value: track.metadata.sceneSuitability.join(", "),
+          ),
+        ],
+
+        // Special flags
+        if (track.metadata.instrumentalOnly || track.metadata.lyricalOnly) ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(
+            title: "Type",
+            value: track.metadata.instrumentalOnly
+                ? "Instrumental Only"
+                : track.metadata.lyricalOnly
+                ? "Lyrical Only"
+                : "Mixed",
+          ),
+        ],
+
+        // Description
+        if (track.description.isNotEmpty) ...[
+          Divider(thickness: 0.4, endIndent: 12, indent: 12, height: 8),
+          TrackMetadataListTile(title: "Description", value: track.description),
+        ],
       ],
     );
+  }
+
+  String _formatDuration(int seconds) {
+    final minutes = seconds ~/ 60;
+    final remainingSeconds = seconds % 60;
+    return "${minutes}:${remainingSeconds.toString().padLeft(2, '0')}";
+  }
+
+  String _formatDate(DateTime date) {
+    return "${date.day}/${date.month}/${date.year}";
   }
 }

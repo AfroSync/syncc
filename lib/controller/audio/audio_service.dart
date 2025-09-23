@@ -1,14 +1,21 @@
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:afrosync/controller/audio/audio_state.dart';
 import 'package:afrosync/model/track_model.dart';
 
 /// Audio service to handle track playback
+///
+/// This service is registered as a singleton in the service locator
+/// to maintain state and connections across the app lifecycle.
 class AudioService {
   static final AudioService _instance = AudioService._();
 
   static AudioService get instance => _instance;
+
+  /// Get the instance from service locator (preferred method)
+  static AudioService get fromServiceLocator => GetIt.instance<AudioService>();
 
   AudioService._();
 
@@ -19,40 +26,37 @@ class AudioService {
 
   /// Initialize the audio service
   Future<void> initialize() async {
+    // Get the audio state manager from service locator
+    final audioStateManager = AudioStateManager.fromServiceLocator;
+
     // Listen to position changes
     _positionSubscription = _audioPlayer.onPositionChanged.listen((position) {
-      AudioStateManager.instance.updatePosition(position);
+      audioStateManager.updatePosition(position);
     });
 
     // Listen to duration changes
     _durationSubscription = _audioPlayer.onDurationChanged.listen((duration) {
-      AudioStateManager.instance.updateDuration(duration);
+      audioStateManager.updateDuration(duration);
     });
 
     // Listen to player state changes
     _playerStateSubscription = _audioPlayer.onPlayerStateChanged.listen((
       state,
     ) {
-      final audioState = AudioStateManager.instance.value;
+      final audioState = audioStateManager.value;
       if (audioState.hasTrack) {
         switch (state) {
           case PlayerState.playing:
-            AudioStateManager.instance.value = audioState.copyWith(
-              isPlaying: true,
-            );
+            audioStateManager.value = audioState.copyWith(isPlaying: true);
             break;
           case PlayerState.paused:
-            AudioStateManager.instance.value = audioState.copyWith(
-              isPlaying: false,
-            );
+            audioStateManager.value = audioState.copyWith(isPlaying: false);
             break;
           case PlayerState.stopped:
-            AudioStateManager.instance.value = audioState.copyWith(
-              isPlaying: false,
-            );
+            audioStateManager.value = audioState.copyWith(isPlaying: false);
             break;
           case PlayerState.completed:
-            AudioStateManager.instance.resetTrack();
+            audioStateManager.resetTrack();
             break;
           default:
             break;
@@ -65,7 +69,7 @@ class AudioService {
   Future<void> playTrack(TrackModel track) async {
     try {
       // Update state first
-      AudioStateManager.instance.playTrack(track);
+      AudioStateManager.fromServiceLocator.playTrack(track);
 
       // Play the audio
       await _audioPlayer.play(UrlSource(track.trackUrl));
@@ -74,7 +78,7 @@ class AudioService {
         print('Error playing track: $e');
       }
       // Reset state on error
-      AudioStateManager.instance.stopTrack();
+      AudioStateManager.fromServiceLocator.stopTrack();
     }
   }
 
@@ -82,7 +86,7 @@ class AudioService {
   Future<void> pauseTrack() async {
     try {
       await _audioPlayer.pause();
-      AudioStateManager.instance.pauseTrack();
+      AudioStateManager.fromServiceLocator.pauseTrack();
     } catch (e) {
       if (kDebugMode) {
         print('Error pausing track: $e');
@@ -94,7 +98,7 @@ class AudioService {
   Future<void> resumeTrack() async {
     try {
       await _audioPlayer.resume();
-      AudioStateManager.instance.resumeTrack();
+      AudioStateManager.fromServiceLocator.resumeTrack();
     } catch (e) {
       if (kDebugMode) {
         print('Error resuming track: $e');
@@ -106,7 +110,7 @@ class AudioService {
   Future<void> stopTrack() async {
     try {
       await _audioPlayer.stop();
-      AudioStateManager.instance.stopTrack();
+      AudioStateManager.fromServiceLocator.stopTrack();
     } catch (e) {
       if (kDebugMode) {
         print('Error stopping track: $e');
@@ -116,7 +120,7 @@ class AudioService {
 
   /// Toggle play/pause
   Future<void> togglePlayPause() async {
-    final audioState = AudioStateManager.instance.value;
+    final audioState = AudioStateManager.fromServiceLocator.value;
     if (!audioState.hasTrack) return;
 
     if (audioState.isPlaying) {

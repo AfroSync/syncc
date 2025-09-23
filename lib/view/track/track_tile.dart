@@ -17,7 +17,7 @@ class TrackTile extends StatefulWidget {
     this.track, {
     super.key,
     this.addHorizontalPadding = true,
-    this.showArtist = false,
+    this.showArtist = true,
   });
 
   @override

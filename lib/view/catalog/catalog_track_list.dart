@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:afrosync/model/track_model.dart';
 import 'package:afrosync/view/track/track_tile.dart';
 
-import '../../api/api_service.dart';
-
 class CatalogTrackList extends StatefulWidget {
   final List<TrackModel> tracks;
 

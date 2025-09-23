@@ -22,6 +22,7 @@ class ModernRoutes {
   static const String profile = '$home/profile';
   static const String catalog = '$home/catalog';
   static const String license = '$home/license';
+  static const String search = '$home/search';
 
   // License contract route
   static String licenseContract(String trackId) => '/license/contract/$trackId';

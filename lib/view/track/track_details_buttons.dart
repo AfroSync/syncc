@@ -6,6 +6,7 @@ import '../../core/color.dart';
 import '../../core/responsive.dart';
 import '../../core/routes.dart';
 import '../../model/track_model.dart';
+import '../license/license_contract_screen.dart';
 
 class TrackDetailsButtons extends StatelessWidget {
   final TrackModel track;
@@ -20,85 +21,90 @@ class TrackDetailsButtons extends StatelessWidget {
       constraints: BoxConstraints(maxWidth: 450, minWidth: 100),
       child: Column(
         children: [
-          Row(
-            spacing: 8,
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    padding: isMobile
-                        ? EdgeInsetsGeometry.symmetric(
-                            vertical: 8,
-                            horizontal: 16,
-                          )
-                        : null,
-                    side: BorderSide(color: ModernColors.text),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      Icon(
-                        CupertinoIcons.play_fill,
-                        color: ModernColors.text,
-                        size: 24,
-                      ),
-                      Text(
-                        "Play",
-
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: ModernColors.text,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () {},
-
-                  style: OutlinedButton.styleFrom(
-                    padding: isMobile
-                        ? EdgeInsetsGeometry.symmetric(
-                            vertical: 8,
-                            horizontal: 16,
-                          )
-                        : null,
-                    side: BorderSide(color: ModernColors.text),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 8,
-
-                    children: [
-                      Icon(
-                        CupertinoIcons.heart_fill,
-                        color: ModernColors.text,
-                        size: 24,
-                      ),
-                      Text(
-                        "Favorite",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: ModernColors.text,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   spacing: 8,
+          //   children: [
+          //     Expanded(
+          //       child: OutlinedButton(
+          //         onPressed: () {},
+          //         style: OutlinedButton.styleFrom(
+          //           padding: isMobile
+          //               ? EdgeInsetsGeometry.symmetric(
+          //                   vertical: 8,
+          //                   horizontal: 16,
+          //                 )
+          //               : null,
+          //           side: BorderSide(color: ModernColors.text),
+          //         ),
+          //         child: Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           spacing: 8,
+          //           children: [
+          //             Icon(
+          //               CupertinoIcons.play_fill,
+          //               color: ModernColors.text,
+          //               size: 24,
+          //             ),
+          //             Text(
+          //               "Play",
+          //
+          //               style: TextStyle(
+          //                 fontSize: 16,
+          //                 color: ModernColors.text,
+          //               ),
+          //               maxLines: 1,
+          //               overflow: TextOverflow.ellipsis,
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     Expanded(
+          //       child: OutlinedButton(
+          //         onPressed: () {},
+          //
+          //         style: OutlinedButton.styleFrom(
+          //           padding: isMobile
+          //               ? EdgeInsetsGeometry.symmetric(
+          //                   vertical: 8,
+          //                   horizontal: 16,
+          //                 )
+          //               : null,
+          //           side: BorderSide(color: ModernColors.text),
+          //         ),
+          //         child: Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           spacing: 8,
+          //
+          //           children: [
+          //             Icon(
+          //               CupertinoIcons.heart_fill,
+          //               color: ModernColors.text,
+          //               size: 24,
+          //             ),
+          //             Text(
+          //               "Favorite",
+          //               style: TextStyle(
+          //                 fontSize: 16,
+          //                 color: ModernColors.text,
+          //               ),
+          //               maxLines: 1,
+          //               overflow: TextOverflow.ellipsis,
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           TextButton(
             onPressed: () {
-              context.push(ModernRoutes.licenseContract(track.id.toString()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LicenseContractScreen(track),
+                ),
+              );
             },
             style: TextButton.styleFrom(
               padding: isMobile
