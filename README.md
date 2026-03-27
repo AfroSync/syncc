@@ -108,7 +108,7 @@ A few things worth calling out:
 ## Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/AfroSync/syncc
 cd syncc
 flutter pub get
 
