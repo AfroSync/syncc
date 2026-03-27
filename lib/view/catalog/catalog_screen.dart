@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:afrosync/model/track_model.dart';
+import 'package:afrosync/model/mock_tracks.dart';
 import 'package:afrosync/view/catalog/catalog_track_list.dart';
 import 'package:afrosync/view/widget/text_title_widget.dart';
 import 'package:afrosync/view/track/audio_player_widget.dart';
@@ -36,7 +37,9 @@ class _CatalogScreenState extends State<CatalogScreen>
         tracks = response.data!.tracks;
       });
     } else {
-      print("Error loading tracks");
+      setState(() {
+        tracks = MockTracks.all;
+      });
     }
   }
 
