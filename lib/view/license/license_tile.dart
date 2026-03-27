@@ -2,128 +2,166 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:afrosync/core/color.dart';
 
-import '../../core/pdf_service.dart';
-import '../../core/responsive.dart';
+import '../../data/mock_data.dart';
+import 'license_detail_screen.dart';
 
-class LicenseTile extends StatefulWidget {
-  const LicenseTile({super.key});
+class LicenseTile extends StatelessWidget {
+  final MockLicensingInquiry inquiry;
 
-  @override
-  State<LicenseTile> createState() => _LicenseTileState();
-}
+  const LicenseTile({super.key, required this.inquiry});
 
-class _LicenseTileState extends State<LicenseTile> {
-  late final PdfService _pdfService;
+  Color get _statusColor {
+    switch (inquiry.status) {
+      case InquiryStatus.approved:
+        return ModernColors.active;
+      case InquiryStatus.declined:
+        return ModernColors.error;
+      case InquiryStatus.countered:
+        return ModernColors.activeBlue;
+      case InquiryStatus.pending:
+        return const Color(0xFFF5A623);
+    }
+  }
 
-  @override
-  void initState() {
-    super.initState();
-    _pdfService = PdfService.fromServiceLocator;
+  String get _statusLabel {
+    switch (inquiry.status) {
+      case InquiryStatus.approved:
+        return 'Approved';
+      case InquiryStatus.declined:
+        return 'Declined';
+      case InquiryStatus.countered:
+        return 'Countered';
+      case InquiryStatus.pending:
+        return 'Pending';
+    }
+  }
+
+  IconData get _requesterIcon {
+    switch (inquiry.requesterType) {
+      case RequesterType.filmmaker:
+        return CupertinoIcons.film;
+      case RequesterType.adAgency:
+        return CupertinoIcons.briefcase;
+      case RequesterType.podcast:
+        return CupertinoIcons.mic;
+      case RequesterType.streamingPlatform:
+        return CupertinoIcons.play_rectangle;
+      case RequesterType.tvNetwork:
+        return CupertinoIcons.tv;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final bool isMobile = Responsive.isMobile(context);
-
-    Future<void> _openLicenseAgreement() async {
-      try {
-        final success = await _pdfService.openLicenseAgreement(
-          context: context,
-        );
-        if (!success && mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                'Failed to open license agreement. Please try again.',
-              ),
-            ),
-          );
-        }
-      } catch (e) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error opening license agreement: $e')),
-          );
-        }
-      }
-    }
-
     return InkWell(
-      onTap: _openLicenseAgreement,
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LicenseDetailScreen(inquiry: inquiry))),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-        child: Column(
-          spacing: 12,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ModernColors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: ModernColors.textSecondary.withOpacity(0.15)),
+          ),
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: ModernColors.textSecondary.withOpacity(0.4),
-                  child: Icon(
-                    CupertinoIcons.mic_solid,
-                    color: ModernColors.text,
-                  ),
-                ),
-                SizedBox(width: 8),
-                Text(
-                  "Sync License",
-                  style: TextStyle(
-                    fontSize: 16,
-                    height: 1,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Spacer(),
-                GestureDetector(
-                  onTap: () {},
-
-                  child: Icon(CupertinoIcons.forward),
-                ),
-              ],
-            ),
-            Row(
-              spacing: 8,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "No U-Turn",
-                      style: TextStyle(fontSize: 18, height: 1),
+                // Left accent bar
+                Container(
+                  width: 2.5,
+                  decoration: BoxDecoration(
+                    color: _statusColor,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      bottomLeft: Radius.circular(12),
                     ),
-                    Text(
-                      "Nnaebue Productions",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: ModernColors.textSecondary,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "Active till 2026",
-                        style: TextStyle(
-                          fontSize: 14,
-
-                          color: ModernColors.textSecondary,
+                  child: Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 10,
+                      children: [
+                        // Top row: requester + status badge
+                        Row(
+                          children: [
+                            Container(
+                              width: 32,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                color: ModernColors.textSecondary.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Icon(_requesterIcon, size: 16, color: ModernColors.text),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                inquiry.requesterName,
+                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, height: 1),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: _statusColor.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                _statusLabel,
+                                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: _statusColor),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                        // Track name + usage
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 2,
+                          children: [
+                            Text(
+                              inquiry.trackRequested,
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, height: 1),
+                            ),
+                            Text(
+                              inquiry.usageType,
+                              style: TextStyle(fontSize: 13, color: ModernColors.textSecondary),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                        // Bottom row: territory + date
+                        Row(
+                          children: [
+                            Icon(CupertinoIcons.globe, size: 12, color: ModernColors.textSecondary),
+                            const SizedBox(width: 4),
+                            Text(inquiry.territory, style: TextStyle(fontSize: 12, color: ModernColors.textSecondary)),
+                            const Spacer(),
+                            Text(
+                              _formatDate(inquiry.submittedDate),
+                              style: TextStyle(fontSize: 12, color: ModernColors.textSecondary),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
+  }
+
+  String _formatDate(DateTime date) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return '${months[date.month - 1]} ${date.day}, ${date.year}';
   }
 }

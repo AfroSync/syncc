@@ -275,6 +275,62 @@ const List<MockContractTemplate> mockContractTemplates = [
 ];
 
 // ---------------------------------------------------------------------------
+// Albums
+// ---------------------------------------------------------------------------
+
+class MockAlbum {
+  final String title;
+  final int year;
+  final int trackCount;
+  final String coverArtUrl;
+
+  const MockAlbum({
+    required this.title,
+    required this.year,
+    required this.trackCount,
+    required this.coverArtUrl,
+  });
+}
+
+final List<MockAlbum> mockAlbums = [
+  MockAlbum(
+    title: 'Lagos After Dark',
+    year: 2024,
+    trackCount: 12,
+    coverArtUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/1e/c9/5b/1ec95bbc-a56f-cbef-070c-ddec9f4fdd3c/196871296205.jpg/600x600bb.jpg',
+  ),
+  MockAlbum(
+    title: 'Continent',
+    year: 2023,
+    trackCount: 10,
+    coverArtUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ca/eb/31/caeb3173-eaf0-0cd5-65ea-585adfe312ba/075679745156.jpg/600x600bb.jpg',
+  ),
+  MockAlbum(
+    title: 'Red Clay Sessions',
+    year: 2022,
+    trackCount: 8,
+    coverArtUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/b0/09/8e/b0098ed0-ef53-f2b5-386a-c8e6181f3c8a/886448775256.jpg/600x600bb.jpg',
+  ),
+  MockAlbum(
+    title: 'Motherboard',
+    year: 2021,
+    trackCount: 14,
+    coverArtUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/b2/b4/7c/b2b47cf9-d8e2-53f6-5c62-c974d665c95b/22UMGIM08994.rgb.jpg/600x600bb.jpg',
+  ),
+  MockAlbum(
+    title: 'Origins EP',
+    year: 2020,
+    trackCount: 6,
+    coverArtUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/00/d3/73/00d373d0-0a08-4e3f-3ace-d2075d4f36f8/196589586582.jpg/600x600bb.jpg',
+  ),
+];
+
+// ---------------------------------------------------------------------------
 // Music Player State
 // ---------------------------------------------------------------------------
 

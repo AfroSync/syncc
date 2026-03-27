@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add a lot of shit - part fucking 4&#10;PS - we lost, we should have picked piracy, they loved that idea. I was right!">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/syncc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/syncc.iml" afterDir="false" />
+    <list default="true" id="2f5d05a2-7ab0-461b-aad0-dd80ee1c41e1" name="Changes" comment="add mock data and update README&#10;&#10;&#10;&#10;--add a lot of shit part 6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/syncc_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/syncc_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/catalog/catalog_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/mock_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/mock_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/license/license_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/license/license_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/license/license_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/license/license_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/profile/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/profile/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/splash/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/splash/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/track/album_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/track/album_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +170,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758616021584</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ignore .idea directory">
+      <option name="closed" value="true" />
+      <created>1774595350635</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1774595350635</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add mock data and update README&#10;&#10;&#10;&#10;--add a lot of shit part 6">
+      <option name="closed" value="true" />
+      <created>1774595407904</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1774595407904</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -188,6 +200,8 @@
     <MESSAGE value="add a lot of shit - part 2" />
     <MESSAGE value="add a lot of shit - part fucking 3" />
     <MESSAGE value="add a lot of shit - part fucking 4&#10;PS - we lost, we should have picked piracy, they loved that idea. I was right!" />
-    <option name="LAST_COMMIT_MESSAGE" value="add a lot of shit - part fucking 4&#10;PS - we lost, we should have picked piracy, they loved that idea. I was right!" />
+    <MESSAGE value="ignore .idea directory" />
+    <MESSAGE value="add mock data and update README&#10;&#10;&#10;&#10;--add a lot of shit part 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="add mock data and update README&#10;&#10;&#10;&#10;--add a lot of shit part 6" />
   </component>
 </project>
