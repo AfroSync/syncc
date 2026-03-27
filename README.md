@@ -16,10 +16,30 @@ license tracks — with a proper contract, not a WhatsApp agreement.
 
 The name is the idea: sync licensing, the formal process of pairing music
 to moving image. We just made it accessible.
+<details>
+  <summary><h2>📱 ▼ App Screenshots</h2></summary>
+  <br>
 
-## 🎥 Demo
+  <div style="
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+  ">
+    <img src="https://github.com/user-attachments/assets/98e3258f-6215-4bad-a181-6eadb0a956c6" alt="Screen 1" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/504c9c31-3d92-4fcc-99ff-e5d6c186285a" alt="Screen 2" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/15b7a0f7-430b-4396-aa88-19ff57b76853" alt="Screen 3" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/6d5183cf-08eb-44be-be86-ec9a8d419c4f" alt="Screen 4" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/e4edf0ae-6983-4534-b558-44debbaa5b8c" alt="Screen 5" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/d8d04ff4-7e71-4349-af9c-8fe60db87134" alt="Screen 6" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/466e01d3-fd36-4819-949b-34331bc1f639" alt="Screen 7" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/8cfc0fb6-8203-422a-a8d5-f4ddaee17699" alt="Screen 8" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/cd0b1c44-5eef-4d13-9c62-5bd7e9495537" alt="Screen 9" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/fa5af737-ee1d-402a-a712-7d36928df88a" alt="Screen 10" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+    <img src="https://github.com/user-attachments/assets/20db50d1-3156-441f-8fe0-0065de38fa2d" alt="Screen 11" style="width: 250px; height: auto; margin-right: 8px; border-radius: 8px;" />
+  </div>
 
-> [coming soon / link here]
+</details>
 
 ## Features
 
